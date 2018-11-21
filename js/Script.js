@@ -68,6 +68,8 @@ function CreerPokemon(){
   // A remplir d'autre Pokémons
 }
 
+// wesh alors
+
 function ChargerJeu(){
  
   nomJoueur = document.getElementById("pseudo").value;
