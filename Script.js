@@ -63,7 +63,7 @@ function creerPokemon(){
     Flameche = new Attaque("Flamèche",30,20,type.FEU),
     Charge,
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
-    Deflagration = new Attaque("Déflagration",80,5,type.ELECTRIK)            
+    Deflagration = new Attaque("Déflagration",80,5,type.FEU)            
     ]);
   
   // A remplir d'autre Pokémons
@@ -84,40 +84,122 @@ function choisirPokemon(){
 }
 
 function lancerCombat(){
-  
-  if( pokemonJoueur.hp<=0){
-   document.getElementById('GameOver').style.display="block";
-   console.log(pokemonJoueur.nom+" est mort");
-  }
-  else{ 
-    if( pokemonIa.hp<=0){
-      var textVictoire= document.getElementById('Gagner');
-      textVictoire.textContent="Vous avez gagner en : "+nbCoups+" coups ! </br> Essayer de faire mieux en cliquant sur rejouer";
-      textVictoire.style.display="block";
-      console.log(pokemonIa.nom+" est mort");
-      }
-    }
-  if((pokemonJoueur.hp>0) && (pokemonIa.hp>0)){
-  
   attaqueJ1 = choisirAttaque(pokemonJoueur);
-  calculDegats(attaqueJ1,pokemonIa);
-  calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+  if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
+    calculDegats(attaqueJ1,pokemonIa);
+    if(pokemonIaEstVivant(pokemonIa))
+      calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+    else return;
+  }
+  else {
+    calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+    if(pokemonJoueurEstVivant(pokemonJoueur))
+      calculDegats(attaqueJ1,pokemonIa);
+    else return;
+  }
+  
   // Animation de la barre de vie qui descend
   
     nbCoups++;
-    lancerCombat();
-    }       
+    lancerCombat();     
+}
+
+function pokemonJoueurEstVivant(pokemonJ){
+  if( pokemonJ.hp<=0){
+    document.getElementById('GameOver').style.display="block";
+    console.log(pokemonJ.nom+" est mort\n");
+    return false;
+   }
+   return true;
+}
+
+function pokemonIaEstVivant(pokemon){
+  if( pokemon.hp<=0){
+    var textVictoire= document.getElementById('Gagner');
+    textVictoire.textContent="Vous avez gagner en : "+nbCoups+" coups ! </br> Essayer de faire mieux en cliquant sur rejouer";
+    textVictoire.style.display="block";
+    console.log(pokemon.nom+" est mort");
+    return false;
+    }
+   return true;
 }
 
 function choisirAttaque(pokemon){
   // Il faut afficher les attaque du pokemon donc surement changer la scène
   // Ecouteur sur l'attaque qu'il faut choisir
   //console.log(pokemon.attaque[0]);
-  return pokemon.attaque[0];
+  var attaqueChoisie = pokemon.attaque[0];
+  
+  if(attaqueChoisie.capacite != 0){
+    attaqueChoisie.capacite--;
+    return attaqueChoisie;
+  }
+  else {
+    //Choisir attaque d'un pokemon redemande de chosiir un autre attaque
+    choisirAttaque(pokemon);
+  }
+  
 }
 
 function calculDegats(attaque,pokemon){
+
+  var eff = efficacite(attaque,pokemon);
+  console.log(eff);
+
+
   console.log(pokemon);
   console.log(attaque);
-  pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5);
+  pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5)*eff;
+}
+
+function efficacite(attaque,pokemon){
+  switch (pokemon.type) {
+    case 'Eau':
+    switch (attaque.type) {
+      case 'Sol': case 'Feu': case 'Eau':
+        return 0.5;
+      case 'Electrik': case 'Plante' :
+        return 2;
+      default:
+        return 1;
+    }
+    case 'Feu':
+    switch (attaque.type) {
+      case 'Plante': case 'Feu':
+        return 0.5;
+      case 'Eau' :
+        return 2;
+      default:
+        return 1;
+    }
+    case 'Plante':
+    switch (attaque.type) {
+      case 'Plante': case 'Eau':
+        return 0.5;
+      case 'Feu' :
+        return 2;
+      default:
+        return 1;
+    }
+    case 'Sol':
+    switch (attaque.type) {
+      case 'Eau' : case 'Plante' :
+        return 2;
+      case 'Electrik':
+        return 0;
+      default:
+        return 1;
+    }
+    case 'Electrik':
+    switch (attaque.type) {
+      case 'Sol' :
+        return 2;
+      case 'Electrik':
+        return 0.5;
+      default:
+        return 1;
+    }
+    default:
+      return 1;
+  }
 }
