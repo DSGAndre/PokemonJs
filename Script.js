@@ -1,4 +1,4 @@
-var nomJoueur;
+﻿var nomJoueur;
 var pokemonJoueur;
 var attaqueJ1;
 var pokemonIa;
@@ -10,13 +10,13 @@ const type ={
   EAU:"Eau",
   FEU :"Feu",
   PLANTE:"Plante",
-  TONERRE:"Tonerre", 
+  ELECTRIK:"Electrik", 
   SOL:"Sol",
   NORMAL:"NORMAL"
   
 };
 
-class attaque {
+class Attaque {
 	 constructor(nom, force, capacite, type){
 		this.nom = nom;
 		this.force =force;
@@ -25,7 +25,8 @@ class attaque {
 	}
 }
 
-class pokemon {
+class Pokemon {
+
 	constructor(nom, type, hp, vitesse, armure, attaque){
 		this.nom =nom;
 		this.type = type;
@@ -40,73 +41,83 @@ window.onload = function () {
 	
     document.getElementsByTagName('p')[0].style.display="none";
     document.getElementsByTagName('p')[1].style.display="none";
-    CreerPokemon();
-	ChargerJeu();
-	ChoisirPokemon();
-	LancerCombat();
+    creerPokemon();
+	chargerJeu();
+	choisirPokemon();
+	lancerCombat();
   
 }
 
-function CreerPokemon(){
+function creerPokemon(){
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
-    Charge = new attaque("Charge",20,30,type.NORMAL);
+    Charge = new Attaque("Charge",20,30,type.NORMAL);
     
-    Pikachu = new pokemon("Pikachu",type.TONNERRE,50,15, Attaque= [
-    Eclair = new attaque("Eclair",30,20,type.TONERRE),
+    Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [
+    Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
-    ViveAttaque = new attaque("ViveAttaque",35,20,type.NORMAL),
-    FatalFoudre = new attaque("Fatal-Foudre",80,5,type.TONNERRE)            
+    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
+    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK)            
     ]);
     
-    Salameche = new pokemon("Salamèche",type.FEU,100,15, Attaque= [
-    Flameche = new attaque("Flamèche",30,20,type.FEU),
+    Salameche = new Pokemon("Salamèche",type.FEU,100,15,5, attaque= [
+    Flameche = new Attaque("Flamèche",30,20,type.FEU),
     Charge,
-    Griffe = new attaque("Griffe",30,20,type.NORMAL),
-    Deflagration = new attaque("Déflagration",80,5,type.TONNERRE)            
+    Griffe = new Attaque("Griffe",30,20,type.NORMAL),
+    Deflagration = new Attaque("Déflagration",80,5,type.ELECTRIK)            
     ]);
   
   // A remplir d'autre Pokémons
 }
 
-function ChargerJeu(){
+function chargerJeu(){
  
   nomJoueur = document.getElementById("pseudo").value;
   // La il faudra changer les scènes html css etc Pour mettre la scène de selection des pokemons
   
 }
 
-function ChoisirPokemon(){
+function choisirPokemon(){
   
   // On écoute le clique de la souris quand il clique sur l'image
-  
+  pokemonIa = Pikachu;
+  pokemonJoueur = Salameche;
 }
 
-function LancerCombat(){
+function lancerCombat(){
   
-  ChoisirAttaque(pokemonJoueur);
-  CalculDegats(attaqueJ1,pokemonIa);
-  CalculDegats(pokemonIa.attaque(getRandomInt(4)),pokemonJoueur);
-  // Animation de la barre de vie qui descend
-  if( PokemonJoueur.hp=="0")
-   document.getElementsByTagName('p')[0].style.display="block";
+  if( pokemonJoueur.hp<=0){
+   document.getElementById('GameOver').style.display="block";
+   console.log(pokemonJoueur.nom+" est mort");
+  }
   else{ 
-    if( PokemonIa.hp=="0")
-      var textVictoire= document.getElementsByTagName('p')[1];
-      textVictoire.textContent="Vous avez gagner en : "+$nbCoups+" coups ! </br> Essayer de faire mieux en cliquant sur rejouer";
+    if( pokemonIa.hp<=0){
+      var textVictoire= document.getElementById('Gagner');
+      textVictoire.textContent="Vous avez gagner en : "+nbCoups+" coups ! </br> Essayer de faire mieux en cliquant sur rejouer";
       textVictoire.style.display="block";
+      console.log(pokemonIa.nom+" est mort");
       }
+    }
+  if((pokemonJoueur.hp>0) && (pokemonIa.hp>0)){
+  
+  attaqueJ1 = choisirAttaque(pokemonJoueur);
+  calculDegats(attaqueJ1,pokemonIa);
+  calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+  // Animation de la barre de vie qui descend
   
     nbCoups++;
-    LancerCombat();
-             
+    lancerCombat();
+    }       
 }
 
-function ChoisirAttaque(pokemon){
+function choisirAttaque(pokemon){
   // Il faut afficher les attaque du pokemon donc surement changer la scène
   // Ecouteur sur l'attaque qu'il faut choisir
+  //console.log(pokemon.attaque[0]);
+  return pokemon.attaque[0];
 }
 
-function CalculDegats(attaque,pokemon){
-
-  pokemon.hp.val = pokemon.hp.val-(attaque-pokemon.armure/5);
+function calculDegats(attaque,pokemon){
+  console.log(pokemon);
+  console.log(attaque);
+  pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5);
 }
