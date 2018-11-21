@@ -5,6 +5,8 @@ var pokemonIa;
 var attaqueIa;
 var nbCoups=0;
 
+let canvas,ctx;
+
 const type ={ 
   
   EAU:"Eau",
@@ -27,13 +29,14 @@ class Attaque {
 
 class Pokemon {
 
-	constructor(nom, type, hp, vitesse, armure, attaque){
+	constructor(nom, type, hp, vitesse, armure, attaque, image){
 		this.nom =nom;
 		this.type = type;
 		this.hp = hp;
 		this.vitesse = vitesse ;
 		this.armure= armure;
-		this.attaque= attaque; 
+    this.attaque= attaque;
+    this.image = image; 
 	}
 }
 
@@ -41,14 +44,31 @@ window.onload = function () {
 	
     document.getElementsByTagName('p')[0].style.display="none";
     document.getElementsByTagName('p')[1].style.display="none";
+    init();
     creerPokemon();
-	chargerJeu();
-	choisirPokemon();
-	lancerCombat();
-  
+	  chargerJeu();
+	  choisirPokemon();
+	  lancerCombat();
+
+    // requestAnimationFrame();
+
+}
+
+function init(){
+
+  canvas = document.querySelector("#myCanvas");
+  ctx = canvas.getContext("2d");
 }
 
 function creerPokemon(){
+
+  var imagePikachu = new Image();
+  imagePikachu.onload = function() {
+
+  }
+  imagePikachu.src = "img/pikachuFace.jpg";
+  ctx.drawImage(imagePikachu,50,50);
+
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
     Charge = new Attaque("Charge",20,30,type.NORMAL);
     
