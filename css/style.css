@@ -1,11 +1,43 @@
+
 #myCanvas {
     border:1px solid;
     background-color:lightGrey;
+    display: block;
+    width:1000px;
+    height:800px;
+    margin:0 auto;
   }
 
-#GameOver{
-  display:none;
+h1{
+	text-align: center;
+	margin-top: 0px;
 }
-#Victoire{
-  display :none;
+
+/*img {
+    max-width: 100%;
+    height: auto;
+} Normalement utiliser pour resize l'image mais ne marche pas */
+
+#nomJoueur{
+    width:1000px;
+ 	text-align: center;
+ 	margin:0 auto;
+  }
+
+#gameOver{
+	 display: none;
+	 width:1000px;
+	 text-align: center;
+	 margin:0 auto;
+}
+
+#gagner{
+	 display: none;
+	 width:1000px;
+	 text-align: center;
+	 margin:0 auto;
+}
+
+:required{
+   border: 2px dotted orange;
 }
