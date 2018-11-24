@@ -1,19 +1,27 @@
 ﻿
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
-   <script type="text/javascript" src="js/script.js"></script>
-  <title>Combat de Pokémon !</title>
-</head>
-<body>
-  <canvas id="myCanvas" width=600 height=600>
-    <!-- <canvas id="nomJoueur" witdh=100 height =100> -->
-      <input type="text" id="pseudo" />
-      <p class="GameOver" id="GameOver"> Vous avez perdu ! Réesayez en cliquant sur rejoué</p>
-      <p class="Gagner" id="Gagner"> </p>
-    <!-- </canvas> -->
-  </canvas>
-</body>
+  <head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+     <script type="text/javascript" src="js/script.js"></script>
+    <title>Combat de Pokémon !</title>
+  </head>
+  <body>
+    <h1>Oui Miaouss Oui la Guerre ! </h1>
+      <div id="nomJoueur" width=100 height =100>
+          <img src="img/pokemonFond.jpg" alt="Image de Pikachu !" >
+
+          <form id="form" onsubmit="chargerJeu()">
+            <h2>Insèrez votre pseudo !</h2>
+            <input type="text" id="pseudo" required/>
+            <button type="submit">Valider</button>
+          </form>
+        </div>
+
+        <div id="gameOver"> </div>
+        <div id="gagner"> </div>
+
+    <canvas id="myCanvas">  </canvas>   
+  </body>
 </html>
