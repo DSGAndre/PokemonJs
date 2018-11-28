@@ -42,32 +42,23 @@ class Pokemon {
     this.vitesse = vitesse ;
     this.armure= armure;
     this.attaque= attaque;
-    this.image = image; 
+    this.imageF = image; 
+    this.imageB = image; 
   }
 }
 
-function init(){
+function start(){
   canvas = document.querySelector("#myCanvas");
   ctx = canvas.getContext("2d");
   ctx.beginPath();
   document.querySelector("#gameOver").style.display="none";
   document.querySelector("#gagner").style.display="none";
-}
-
-window.onload =function debut() {
-  init();
   creerPokemon();
 }
 
+
 function creerPokemon(){
-
-  var imagePikachu = new Image();
-  imagePikachu.onload = function() {
-
   
-  imagePikachu.src = "img/pikachuFace.jpg";
-  ctx.drawImage(imagePikachu,50,50);
-}
 
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
     Charge = new Attaque("Charge",20,30,type.NORMAL);
@@ -76,15 +67,15 @@ function creerPokemon(){
     Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
     ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
-    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK)            
-    ]);
+    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),          
+    ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
     
     Salameche = new Pokemon("Salamèche",type.FEU,100,15,5, attaque= [
     Flameche = new Attaque("Flamèche",30,20,type.FEU),
     Charge,
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
     Deflagration = new Attaque("Déflagration",80,5,type.FEU)            
-    ]);
+    ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
   
   // A remplir d'autre Pokémons
 }
