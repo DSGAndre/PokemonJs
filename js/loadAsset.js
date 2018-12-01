@@ -3,40 +3,38 @@ window.onload = init;
 
 var assetsToLoadURLs = {
 
-    imagePikachuF: { url: './img/front/pikachuF.png' },
-    imagePikachuB: { url :'./img/back/pikachuB.png'},
+    imagePikachuF: { url: './assets/img/front/pikachuF.png' },
+    imagePikachuB: { url :'./assets/img/back/pikachuB.png'},
 
-    imageSalemecheF: { url: './img/front/salamecheF.png' },
-    imageSalemecheB: { url: './img/back/salamecheB.png' },
+    imageSalemecheF: { url: './assets/img/front/salamecheF.png' },
+    imageSalemecheB: { url: './assets/img/back/salamecheB.png' },
 
-    imageCarapuceF: { url: './img/front/carapuceF.png' },
-    imageCarapuceB: { url: './img/back/carapuceB.png' },
+    imageCarapuceF: { url: './assets/img/front/carapuceF.png' },
+    imageCarapuceB: { url: './assets/img/back/carapuceB.png' },
 
-    imageBulbizarreF: { url: './img/front/bulbizarreF.png' },
-    imageBulbizarreB: { url: './img/back/bulbizarreB.png' },
+    imageBulbizarreF: { url: './assets/img/front/bulbizarreF.png' },
+    imageBulbizarreB: { url: './assets/img/back/bulbizarreB.png' },
 
-    imageCaninosF: { url: './img/front/caninosF.png' },
-    imageCaninosB: { url: './img/back/caninosB.png' },
+    imageCaninosF: { url: './assets/img/front/caninosF.png' },
+    imageCaninosB: { url: './assets/img/back/caninosB.png' },
 
-    imageChetiflorF: { url: './img/front/chetiflorF.png' },
-    imageChetiflorB: { url: './img/back/chetiflorB.png' },
+    imageChetiflorF: { url: './assets/img/front/chetiflorF.png' },
+    imageChetiflorB: { url: './assets/img/back/chetiflorB.png' },
 
-    imageMiaoussF: { url: './img/front/miaoussF.png' },
-    imageMiaoussB: { url: './img/back/miaoussB.png' },
+    imageMiaoussF: { url: './assets/img/front/miaoussF.png' },
+    imageMiaoussB: { url: './assets/img/back/miaoussB.png' },
 
-    imageEvoliF: { url: './img/front/evoliF.png' },
-    imageEvoliB: { url: './img/back/evoliB.png' },
+    imageEvoliF: { url: './assets/img/front/evoliF.png' },
+    imageEvoliB: { url: './assets/img/back/evoliB.png' },
 
-    imageHypotrempeF: { url: './img/front/hypotrempeF.png' },
-    imageHypotrempeB: { url: './img/back/hypotrempeB.png' }, 
+    imageHypotrempeF: { url: './assets/img/front/hypotrempeF.png' },
+    imageHypotrempeB: { url: './assets/img/back/hypotrempeB.png' }, 
 
-    imageTaupiqueurF: { url: './img/front/taupiqueurF.png' },
-    imageTaupiqueurB: { url: './img/back/taupiqueurB.png' }
-    /*spriteSheetBunny: { url: 'https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/images/bunnySpriteSheet.jpg' },
-    plop: { url: 'https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/plop.mp3', buffer: false, loop: false, volume: 1.0 },
-    humbug: { url: 'https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/humbug.mp3', buffer: true, loop: true, volume: 1.0 },
-    concertino: { url: 'https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/christmas_concertino.mp3', buffer: true, loop: true, volume: 1.0 },
-    xmas: { url: 'https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/xmas.mp3', buffer: true, loop: true, volume: 0.6 }*/
+    imageTaupiqueurF: { url: './assets/img/front/taupiqueurF.png' },
+    imageTaupiqueurB: { url: './assets/img/back/taupiqueurB.png' },
+
+    battleSong: { url: './assets/mp3/battleSong.mp3', buffer: true, loop: true, volume: 0.7 }
+   
 };
 
 var loadedAssets;
@@ -67,7 +65,7 @@ function loadAssets(callback) {
     files have been loaded and decoded 
  ############################## */
 function isImage(url) {
-    return (url.match(/\.(jpeg|jpg|gif|png)$/) != null );
+    return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
 function isAudio(url) {
@@ -123,5 +121,3 @@ function loadAssetsUsingHowlerAndNoXhr(assetsToBeLoaded, callback) {
 
     } // for
 } // function
-
-
