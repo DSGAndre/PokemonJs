@@ -59,7 +59,7 @@ function start(){
 
 function creerPokemon(){
   
-
+    console.log("Création des pokemons ");
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
     Charge = new Attaque("Charge",20,30,type.NORMAL);
     
@@ -97,6 +97,7 @@ function choisirPokemon(){
   // On écoute le clique de la souris quand il clique sur l'image
   pokemonIa = Pikachu;
   pokemonJoueur = Salameche;
+  loadedAssets.battleSong.play();
 }
 
 function lancerCombat(){
@@ -126,6 +127,8 @@ function pokemonJoueurEstVivant(pokemonJ){
     defaite.appendChild(button);
     defaite.style.display="block";
     console.log(pokemonJ.nom+" est mort\n");
+    loadedAssets.battleSong.pause();
+    loadedAssets.battleSong.currentime=0;
     return false;
    }
    return true;
@@ -138,6 +141,8 @@ function pokemonIaEstVivant(pokemon){
     textVictoire.appendChild(button);
     textVictoire.style.display="block";
     console.log(pokemon.nom+" est mort");
+    loadedAssets.battleSong.pause();
+    loadedAssets.battleSong.currentime=0;
     return false;
     }
    return true;
