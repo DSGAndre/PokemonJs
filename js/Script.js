@@ -108,7 +108,7 @@ function lancerCombat(){
       calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
     else return;
   }
-  else {
+  else { 
     calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
     if(pokemonJoueurEstVivant(pokemonJoueur))
       calculDegats(attaqueJ1,pokemonIa);
@@ -121,9 +121,9 @@ function lancerCombat(){
 }
 
 function pokemonJoueurEstVivant(pokemonJ){
-  if( pokemonJ.hp<=0){
+  if(pokemonJ.hp<=0){
     var defaite=document.querySelector('#gameOver');
-    defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentans votre chance ! <br/><br/>";
+    defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentant votre chance ! <br/><br/>";
     defaite.appendChild(button);
     defaite.style.display="block";
     console.log(pokemonJ.nom+" est mort\n");
@@ -135,7 +135,7 @@ function pokemonJoueurEstVivant(pokemonJ){
 }
 
 function pokemonIaEstVivant(pokemon){
-  if( pokemon.hp<=0){
+  if(pokemon.hp<=0){
     var textVictoire= document.querySelector('#gagner');
     textVictoire.innerHTML ="Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer<br/><br/>";
     textVictoire.appendChild(button);

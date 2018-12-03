@@ -64,6 +64,7 @@ function loadAssets(callback) {
     BUFFER LOADER for loading multiple files asyncrhonously. The callback functions is called when all
     files have been loaded and decoded 
  ############################## */
+ 
 function isImage(url) {
     return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
