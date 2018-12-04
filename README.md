@@ -26,3 +26,8 @@ Selection des pokémons
 les combats
 Son 
 
+Contribueurs : 
+
+Koruya et DSGAndre sont : André Da Silva Goncalves
+Hiboude = Alexandre reita 
+Bourgeat et Killian06 =  Killian Bourgeat
