@@ -11,6 +11,8 @@ button.setAttribute("value","Reesayer");
 button.setAttribute("onClick","location.href=location.href");
 let canvas,ctx;
 
+
+
 const type ={ 
   
   EAU:"Eau",
@@ -35,15 +37,15 @@ class Attaque {
 
 class Pokemon {
 
-  constructor(nom, type, hp, vitesse, armure, attaque, image){
+  constructor(nom, type, hp, vitesse, armure, attaque, imageFront, imageBack){
     this.nom =nom;
     this.type = type;
     this.hp = hp;
     this.vitesse = vitesse ;
     this.armure= armure;
     this.attaque= attaque;
-    this.imageF = image; 
-    this.imageB = image; 
+    this.imageFront = imageFront; 
+    this.imageBack = imageBack; 
   }
 }
 
@@ -55,6 +57,7 @@ function start(){
   document.querySelector("#gagner").style.display="none";
   creerPokemon();
 }
+
 
 
 function creerPokemon(){
@@ -76,18 +79,21 @@ function creerPokemon(){
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
     Deflagration = new Attaque("Déflagration",80,5,type.FEU)            
     ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
-  
+    loadedAssets.generiqueSong.play();
+    chargerJeu();
   // A remplir d'autre Pokémons
 }
 //document.querySelector("form").onsubmit =
  function chargerJeu(){
-
+  
+  loadedAssets.defeatSong.currentime=0;
+  loadedAssets.victorySong.currentime=0;
   nomJoueur = document.querySelector("#pseudo").value;
+  while(nomJoueur =="") chargerJeu();   //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
   console.log("Nom égal = " +nomJoueur);
   // on cache la div
-  document.querySelector("#nomJoueur").style.display="none";
 
-  event.preventDefault(); // Reset l'envoie du formulaire*/
+  document.querySelector("#nomJoueur").style.display="none";
   choisirPokemon();
   lancerCombat();
 }
@@ -97,6 +103,9 @@ function choisirPokemon(){
   // On écoute le clique de la souris quand il clique sur l'image
   pokemonIa = Pikachu;
   pokemonJoueur = Salameche;
+  // On écoute le clique de la souris quand il clique sur l'image
+  loadedAssets.generiqueSong.pause();
+  loadedAssets.generiqueSong.currentime=0;
   loadedAssets.battleSong.play();
 }
 
@@ -122,6 +131,9 @@ function lancerCombat(){
 
 function pokemonJoueurEstVivant(pokemonJ){
   if( pokemonJ.hp<=0){
+    loadedAssets.battleSong.pause();
+    loadedAssets.battleSong.currentime=0;
+    loadedAssets.defeatSong.play();
     var defaite=document.querySelector('#gameOver');
     defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentans votre chance ! <br/><br/>";
     defaite.appendChild(button);
@@ -136,6 +148,9 @@ function pokemonJoueurEstVivant(pokemonJ){
 
 function pokemonIaEstVivant(pokemon){
   if( pokemon.hp<=0){
+    loadedAssets.battleSong.pause();
+    loadedAssets.battleSong.currentime=0;
+    loadedAssets.victorySong.play();
     var textVictoire= document.querySelector('#gagner');
     textVictoire.innerHTML ="Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer<br/><br/>";
     textVictoire.appendChild(button);
