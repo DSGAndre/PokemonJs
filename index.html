@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+     <script type="text/javascript" src="js/script.js"></script>
+     <script type="text/javascript" src ="js/loadAsset.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+    <title>Combat de Pokémon !</title>
+  </head>
+  <body>
+    <h1>Oui Miaouss Oui la Guerre ! </h1>
+      <div id="nomJoueur" width=100 height =100>
+          <img src="assets/img/pokemonFond.jpg" alt="Image de Pikachu !" >
+
+          <form id="form" onsubmit="chargerJeu()">
+            <h2>Insèrez votre pseudo !</h2>
+            <input type="text" id="pseudo" required/>
+            <button type="submit">Valider</button>
+          </form>
+        </div>
+
+        <div id="gameOver"> </div>
+        <div id="gagner"> </div>
+
+    <canvas id="myCanvas">  </canvas>   
+  </body>
+</html>

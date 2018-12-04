@@ -33,7 +33,11 @@ var assetsToLoadURLs = {
     imageTaupiqueurF: { url: './assets/img/front/taupiqueurF.png' },
     imageTaupiqueurB: { url: './assets/img/back/taupiqueurB.png' },
 
-    battleSong: { url: './assets/mp3/battleSong.mp3', buffer: true, loop: true, volume: 0.7 }
+    battleSong: { url: './assets/mp3/battle.mp3', buffer: true, loop: true, volume: 0.5 },
+    selectionSong: {url: './assets/mp3/selection.wav',buffer: true, loop:true, volume:0.9},
+    generiqueSong: { url: './assets/mp3/generique.mp3', buffer: true, loop: true, volume: 0.5 },
+    victorySong: {url: './assets/mp3/victory.mp3',buffer: true, loop:true, volume:0.5},
+    defeatSong : {url: './assets/mp3/defeat.mp3',buffer: true, loop:true, volume:0.5}
    
 };
 
