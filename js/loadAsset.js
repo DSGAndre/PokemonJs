@@ -105,7 +105,7 @@ function loadAssetsUsingHowlerAndNoXhr(assetsToBeLoaded, callback) {
             // We assume the asset is an audio file
             console.log("loading " + name + " buffer : " + assetsToBeLoaded[name].loop);
             assetsLoaded[name] = new Howl({
-                urls: [url],
+                src: [url],
                 buffer: assetsToBeLoaded[name].buffer,
                 loop: assetsToBeLoaded[name].loop,
                 autoplay: false,

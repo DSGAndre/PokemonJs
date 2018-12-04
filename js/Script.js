@@ -11,6 +11,8 @@ button.setAttribute("value","Reesayer");
 button.setAttribute("onClick","location.href=location.href");
 let canvas,ctx;
 
+
+
 const type ={ 
   
   EAU:"Eau",
@@ -35,15 +37,15 @@ class Attaque {
 
 class Pokemon {
 
-  constructor(nom, type, hp, vitesse, armure, attaque, image){
+  constructor(nom, type, hp, vitesse, armure, attaque, iF, iB){
     this.nom =nom;
     this.type = type;
     this.hp = hp;
     this.vitesse = vitesse ;
     this.armure= armure;
     this.attaque= attaque;
-    this.imageF = image; 
-    this.imageB = image; 
+    this.imageF = iF; 
+    this.imageB = iB; 
   }
 }
 
@@ -55,6 +57,7 @@ function start(){
   document.querySelector("#gagner").style.display="none";
   creerPokemon();
 }
+
 
 
 function creerPokemon(){
@@ -88,6 +91,7 @@ function creerPokemon(){
   document.querySelector("#nomJoueur").style.display="none";
 
   event.preventDefault(); // Reset l'envoie du formulaire*/
+  //creerPokemon();
   choisirPokemon();
   lancerCombat();
 }
