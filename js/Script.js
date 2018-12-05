@@ -64,21 +64,86 @@ function creerPokemon(){
   
     console.log("Création des pokemons ");
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
+    //nom, type, hp, vitesse, armure, attaque, imageFront, imageBack
+    // nom, force, capacite, type
     Charge = new Attaque("Charge",20,30,type.NORMAL);
+    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
+    FouetLiane = new Attaque("Fouet Liane",20,20,type.PLANTE),
+    Griffe = new Attaque("Griffe",30,20,type.NORMAL),
+    Flameche = new Attaque("Flamèche",30,20,type.FEU),
     
     Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [
     Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
-    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
+    ViveAttaque,
     FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),          
     ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
     
-    Salameche = new Pokemon("Salamèche",type.FEU,100,15,5, attaque= [
-    Flameche = new Attaque("Flamèche",30,20,type.FEU),
+    Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [
+    Flameche,
     Charge,
-    Griffe = new Attaque("Griffe",30,20,type.NORMAL),
-    Deflagration = new Attaque("Déflagration",80,5,type.FEU)            
+    Griffe,
+    Deflagration = new Attaque("Déflagration",60,5,type.FEU)            
     ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
+
+    Bulbizarre = new Pokemon("Bulbizarre",type.PLANTE,100,5,20,attaque = [
+    FouetLiane,
+    Charge,
+    Bélier = new Attaque("ViveAttaque",40,10,type.NORMAL),
+    CanonGraine = new Attaque("Canon Graine",60,5,type.PLANTE), 
+      ],loadedAssets.imageBulbizarreF,loadedAssets.imageBulbizarreB);
+
+    Carapuce = new Pokemon("Carapuce",type.EAU,80,15, attaque =[
+    Ecume = new Attaque("Ecume",20,20,type.EAU),
+    Charge,
+    Griffe,
+    Hydrocanon = new Attaque("Hydrocanon",60,5,type.EAU)            
+    ],loadedAssets.imageCarapuceF,loadedAssets.imageCarapuceB);
+
+    Caninos = new Pokemon("Caninos",type.FEU,60,17, attaque =[
+    Flameche,
+    Charge,
+    ViveAttaque,
+    LanceFlamme = new Attaque("Lance-Flamme",60,5,type.Feu)            
+    ],loadedAssets.imageCaninosF,loadedAssets.imageCaninosB);
+
+    Chetiflor = new Pokemon("Chetiflor",type.PLANTE,60,5, attaque =[
+    FouetLiane,
+    Charge,
+    ViveAttaque,
+    EcoSphere = new Attaque("Eco-Sphère",60,5,type.PLANTE)            
+    ],loadedAssets.imageChetiflorF,loadedAssets.imageChetiflorB);
+
+    Miaouss = new Pokemon("Miaouss",type.NORMAL,50,5, attaque =[
+    Jackpot = new Attaque("Jackpot",30,15,type.NORMAL),
+    Charge,
+    ViveAttaque,
+    Ultralaser = new Attaque("Ultralaser",100,1,type.NORMAL),       
+    ],loadedAssets.imageMiaoussF,loadedAssets.imageMiaoussB);    
+
+    Evoli = new Pokemon("Evoli",type.NORMAL,70,5, attaque =[
+    Griffe,
+    Charge,
+    ViveAttaque,
+    Damoclès = new Attaque("Damoclès",60,5,type.NORMAL),       
+    ],loadedAssets.imageEvoliF,loadedAssets.imageEvoliB);
+
+    Hypotrempe = new Pokemon("Hypotrempe",type.EAU,50,5, attaque =[
+    PistoletAO = new Attaque("PistoletAO",15,25,type.EAU),
+    Charge,
+    ViveAttaque,
+    Surf = new Attaque("Surf",50,7,type.EAU),       
+    ],loadedAssets.imageHypotrempeF,loadedAssets.imageHypotrempeB);
+
+    Taupiqueur = new Pokemon("Taupiqueur",type.SOL,100,10, attaque =[
+    CoudBoue = new Attaque("Coud\'Boue",15,25,type.SOL),
+    Charge,
+    ViveAttaque,
+    Seisme = new Attaque("Séisme",60,5,type.SOL),       
+    ],loadedAssets.imageTaupiqueurF,loadedAssets.imageTaupiqueurB);
+
+
+  
     loadedAssets.generiqueSong.play();
     chargerJeu();
   // A remplir d'autre Pokémons
