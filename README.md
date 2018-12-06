@@ -10,9 +10,6 @@ Le but de notre projet est de rendre le combat dynamique et donc de ne pas se li
 
 ## Bug actuelle :
 
-Je n'ai toujours pas trouvé comment mettre un id dans le canvas, au lieu de dessiner le menu dans celui-ci ce qui est plus faisable.
-Existe t'il un autre moyen de lancer les sons que via un serveur ? Ou alors obliger l'utilisateur à télécharger l'extension avant de lancer le jeu ? 
-
 NOTRE JEU EST POUR VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console 
 
 ## Fonctionnel :

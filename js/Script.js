@@ -146,7 +146,7 @@ function creerPokemon(){
 }
 //document.querySelector("form").onsubmit =
  function chargerJeu(e){
-  e.preventDefault();
+  e.preventDefault(); 
   loadedAssets.defeatSong.currentime=0;
   loadedAssets.victorySong.currentime=0;
   nomJoueur = document.querySelector("#pseudo").value; //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
