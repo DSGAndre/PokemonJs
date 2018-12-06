@@ -6,11 +6,10 @@ var attaqueIa;
 var nbCoups=0;
 var button;
 button=document.createElement("input");
-button.setAttribute("type", "button");
+button.setAttribute("type", "submit");
 button.setAttribute("value","Reesayer");
-button.setAttribute("onClick","location.href=location.href");
+button.setAttribute("onClick","newGame()");
 let canvas,ctx;
-
 
 
 const type ={ 
@@ -142,25 +141,19 @@ function creerPokemon(){
     Seisme = new Attaque("Séisme",60,5,type.SOL),       
     ],loadedAssets.imageTaupiqueurF,loadedAssets.imageTaupiqueurB);
 
-
-  
     loadedAssets.generiqueSong.play();
-    chargerJeu();
   // A remplir d'autre Pokémons
 }
 //document.querySelector("form").onsubmit =
- function chargerJeu(){
-  
+ function chargerJeu(e){
+  e.preventDefault();
   loadedAssets.defeatSong.currentime=0;
   loadedAssets.victorySong.currentime=0;
-  nomJoueur = document.querySelector("#pseudo").value;
-  while(nomJoueur =="") chargerJeu();   //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
+  nomJoueur = document.querySelector("#pseudo").value; //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
   console.log("Nom égal = " +nomJoueur);
   // on cache la div
-
   document.querySelector("#nomJoueur").style.display="none";
   choisirPokemon();
-  lancerCombat();
 }
 
 function choisirPokemon(){
@@ -170,11 +163,13 @@ function choisirPokemon(){
   pokemonJoueur = Salameche;
   // On écoute le clique de la souris quand il clique sur l'image
   loadedAssets.generiqueSong.pause();
-  loadedAssets.generiqueSong.currentime=0;
-  loadedAssets.battleSong.play();
+  /*loadedAssets.generiqueSong.currentime=0;
+  loadedAssets.battleSong.play();*/
+   lancerCombat();
 }
 
 function lancerCombat(){
+  //chargerMap();
   attaqueJ1 = choisirAttaque(pokemonJoueur);
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
     calculDegats(attaqueJ1,pokemonIa);
@@ -194,6 +189,13 @@ function lancerCombat(){
       if(pokemonJoueurEstVivant(pokemonJoueur)) lancerCombat();     
 }
 
+
+/*function genererMap(){
+  
+  // Ici il faudra load les maps via un int random au moins les maps sont aléatoires.
+
+}*/
+
 function pokemonJoueurEstVivant(pokemonJ){
   if( pokemonJ.hp<=0){
     loadedAssets.battleSong.pause();
@@ -204,8 +206,6 @@ function pokemonJoueurEstVivant(pokemonJ){
     defaite.appendChild(button);
     defaite.style.display="block";
     console.log(pokemonJ.nom+" est mort\n");
-    loadedAssets.battleSong.pause();
-    loadedAssets.battleSong.currentime=0;
     return false;
    }
    return true;
@@ -220,9 +220,7 @@ function pokemonIaEstVivant(pokemon){
     textVictoire.innerHTML ="Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer<br/><br/>";
     textVictoire.appendChild(button);
     textVictoire.style.display="block";
-    console.log(pokemon.nom+" est mort");
-    loadedAssets.battleSong.pause();
-    loadedAssets.battleSong.currentime=0;
+    console.log(pokemon.nom+" est mort\n");
     return false;
     }
    return true;
@@ -250,6 +248,12 @@ function calculDegats(attaque,pokemon){
   console.log(attaque);
   console.log(pokemon);
   pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5)*eff;
+  // Animation barre de vie qui descend 
+}
+
+function newGame(){
+  
+  location.reload();
 }
 
 function efficacite(attaque,pokemon){
