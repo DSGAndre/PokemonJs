@@ -175,18 +175,17 @@ function lancerCombat(){
     calculDegats(attaqueJ1,pokemonIa);
     if(pokemonIaEstVivant(pokemonIa))
       calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-    else return;
   }
   else {
     calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
     if(pokemonJoueurEstVivant(pokemonJoueur))
       calculDegats(attaqueJ1,pokemonIa);
-    else return;
   }
   // Animation de la barre de vie qui descend
     nbCoups++;
   // résolution du bug comme quoi l'ia est morte donc le combat s'arrête
-      if(pokemonJoueurEstVivant(pokemonJoueur)) lancerCombat();     
+      if(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa)) lancerCombat(); 
+      else console.log("Combat fini");    
 }
 
 
@@ -196,8 +195,8 @@ function lancerCombat(){
 
 }*/
 
-function pokemonJoueurEstVivant(pokemonJ){
-  if( pokemonJ.hp<=0){
+function pokemonJoueurEstVivant(pokemon){
+  if( pokemon.hp<=0){
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
@@ -205,7 +204,7 @@ function pokemonJoueurEstVivant(pokemonJ){
     defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentans votre chance ! <br/><br/>";
     defaite.appendChild(button);
     defaite.style.display="block";
-    console.log(pokemonJ.nom+" est mort\n");
+    console.log(pokemon.nom+" est mort\n");
     return false;
    }
    return true;
