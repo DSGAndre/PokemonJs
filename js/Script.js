@@ -1,8 +1,12 @@
-﻿var nomJoueur;
+﻿// window.onload = start;
+
+var nomJoueur;
 var pokemonJoueur;
 var attaqueJ1;
 var pokemonIa;
 var attaqueIa;
+var ImageIA;
+var ImageJoueur;
 var nbCoups=0;
 var button;
 button=document.createElement("input");
@@ -10,6 +14,7 @@ button.setAttribute("type", "submit");
 button.setAttribute("value","Reesayer");
 button.setAttribute("onClick","newGame()");
 let canvas,ctx;
+
 
 
 const type ={ 
@@ -20,7 +25,7 @@ const type ={
   ELECTRIK:"Electrik", 
   SOL:"Sol",
   NORMAL:"NORMAL"
-  
+
 };
 
 class Attaque {
@@ -49,15 +54,19 @@ class Pokemon {
 }
 
 function start(){
+
   canvas = document.querySelector("#myCanvas");
+  canvas.width = 640;
+  canvas.height = 480;
   ctx = canvas.getContext("2d");
   ctx.beginPath();
   document.querySelector("#gameOver").style.display="none";
   document.querySelector("#gagner").style.display="none";
+
+    ctx.drawImage(loadedAssets.fond,0,0);   
+
   creerPokemon();
 }
-
-
 
 function creerPokemon(){
   
@@ -144,6 +153,7 @@ function creerPokemon(){
     loadedAssets.generiqueSong.play();
   // A remplir d'autre Pokémons
 }
+
 //document.querySelector("form").onsubmit =
  function chargerJeu(e){
   e.preventDefault(); 
@@ -159,6 +169,7 @@ function creerPokemon(){
 function choisirPokemon(){
   
   // On écoute le clique de la souris quand il clique sur l'image
+  // Faire un eventlistener
   pokemonIa = Pikachu;
   pokemonJoueur = Salameche;
   // On écoute le clique de la souris quand il clique sur l'image
@@ -169,6 +180,20 @@ function choisirPokemon(){
 }
 
 function lancerCombat(){
+
+  console.log("Afficher Pokemon");
+
+  // Affichage Pokemon IA
+
+  ctx.drawImage(pokemonIa.imageFront,60,150);  
+
+  // Affichage Pokemon Joueur
+  // var afficheJoueur = new Image();
+  // imageJoueur.src = "./assets/img/front/pikachuF.png";
+  // imageJoueur.onload = function(){
+  //   ctx.drawImage(imageJoueur,425,70);   
+  // }
+
   //chargerMap();
   attaqueJ1 = choisirAttaque(pokemonJoueur);
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
@@ -211,7 +236,7 @@ function pokemonJoueurEstVivant(pokemon){
 }
 
 function pokemonIaEstVivant(pokemon){
-  if( pokemon.hp<=0){
+  if(pokemon.hp<=0){
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
