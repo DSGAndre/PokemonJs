@@ -1,6 +1,4 @@
-﻿// window.onload = start;
-
-var nomJoueur;
+﻿var nomJoueur;
 var pokemonJoueur;
 var attaqueJ1;
 var pokemonIa;
@@ -9,13 +7,9 @@ var ImageIA;
 var ImageJoueur;
 var nbCoups=0;
 var button;
-button=document.createElement("input");
-button.setAttribute("type", "submit");
-button.setAttribute("value","Reesayer");
-button.setAttribute("onClick","newGame()");
+button=document.createElement("button");
+button.innerText="Réesayer";
 let canvas,ctx;
-
-
 
 const type ={ 
   
@@ -53,6 +47,11 @@ class Pokemon {
   }
 }
 
+function newGame(){
+  
+  location.reload();
+}
+
 function start(){
 
   canvas = document.querySelector("#myCanvas");
@@ -62,9 +61,6 @@ function start(){
   ctx.beginPath();
   document.querySelector("#gameOver").style.display="none";
   document.querySelector("#gagner").style.display="none";
-
-    ctx.drawImage(loadedAssets.fond,0,0);   
-
   creerPokemon();
 }
 
@@ -154,7 +150,6 @@ function creerPokemon(){
   // A remplir d'autre Pokémons
 }
 
-//document.querySelector("form").onsubmit =
  function chargerJeu(e){
   e.preventDefault(); 
   loadedAssets.defeatSong.currentime=0;
@@ -169,32 +164,18 @@ function creerPokemon(){
 function choisirPokemon(){
   
   // On écoute le clique de la souris quand il clique sur l'image
-  // Faire un eventlistener
   pokemonIa = Pikachu;
   pokemonJoueur = Salameche;
   // On écoute le clique de la souris quand il clique sur l'image
   loadedAssets.generiqueSong.pause();
-  /*loadedAssets.generiqueSong.currentime=0;
-  loadedAssets.battleSong.play();*/
-   lancerCombat();
+  loadedAssets.generiqueSong.currentime=0;
+  loadedAssets.battleSong.play();
+  lancerCombat();
 }
 
 function lancerCombat(){
 
-  console.log("Afficher Pokemon");
-
-  // Affichage Pokemon IA
-
-  ctx.drawImage(pokemonIa.imageFront,60,150);  
-
-  // Affichage Pokemon Joueur
-  // var afficheJoueur = new Image();
-  // imageJoueur.src = "./assets/img/front/pikachuF.png";
-  // imageJoueur.onload = function(){
-  //   ctx.drawImage(imageJoueur,425,70);   
-  // }
-
-  //chargerMap();
+  genererMap();
   attaqueJ1 = choisirAttaque(pokemonJoueur);
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
     calculDegats(attaqueJ1,pokemonIa);
@@ -214,11 +195,19 @@ function lancerCombat(){
 }
 
 
-/*function genererMap(){
-  
-  // Ici il faudra load les maps via un int random au moins les maps sont aléatoires.
+function genererMap(){
+ 
+  ctx.drawImage(pokemonIa.imageFront,60,150); 
+  ctx.drawImage(loadedAssets.fond,0,0);
 
-}*/
+  // Affichage Pokemon Joueur
+  // var afficheJoueur = new Image();
+  // imageJoueur.src = "./assets/img/front/pikachuF.png";
+  // imageJoueur.onload = function(){
+  //   ctx.drawImage(imageJoueur,425,70);   
+  // }
+
+}
 
 function pokemonJoueurEstVivant(pokemon){
   if( pokemon.hp<=0){
@@ -226,7 +215,7 @@ function pokemonJoueurEstVivant(pokemon){
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
     var defaite=document.querySelector('#gameOver');
-    defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentans votre chance ! <br/><br/>";
+    button.addEventListener("click",newGame);
     defaite.appendChild(button);
     defaite.style.display="block";
     console.log(pokemon.nom+" est mort\n");
@@ -236,14 +225,17 @@ function pokemonJoueurEstVivant(pokemon){
 }
 
 function pokemonIaEstVivant(pokemon){
-  if(pokemon.hp<=0){
+  if( pokemon.hp<=0){
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
-    var textVictoire= document.querySelector('#gagner');
-    textVictoire.innerHTML ="Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer<br/><br/>";
-    textVictoire.appendChild(button);
-    textVictoire.style.display="block";
+    var gagner= document.querySelector('#gagner');
+    var textVictoire = document.createTextNode("Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer");
+    gagner.appendChild(textVictoire);
+    gagner.appendChild(document.createElement("br"));
+    button.addEventListener("click",newGame);
+    gagner.appendChild(button);
+    gagner.style.display="block";
     console.log(pokemon.nom+" est mort\n");
     return false;
     }
@@ -275,10 +267,6 @@ function calculDegats(attaque,pokemon){
   // Animation barre de vie qui descend 
 }
 
-function newGame(){
-  
-  location.reload();
-}
 
 function efficacite(attaque,pokemon){
   switch (pokemon.type) {
