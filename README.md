@@ -12,15 +12,18 @@ Le but de notre projet est de rendre le combat dynamique et donc de ne pas se li
 
 NOTRE JEU EST POUR VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console 
 
+- Dans le cas ou les deux pokémons meurt donc en cas d'égalité ce qui n'est normalement pas possible les deux écrans s'affichent (victoire, défaite);
+- Affichage des image de pokémon en fonction des pokémon choisis
+
 ## Fonctionnel :
 
 - Fonctionnalité en globalité(combat,score,class pokemon,attaque,rejouabilité) --> Ok 
 - Image/son load --> Ok 
-- Tout les pokémons on était crée
+- Tout les pokémons on était crée --> Ok
+- Selection des pokemons --> Ok
 
 ## Manque :
 
-- Selection des pokémons 
 - La frame des combats
 - Générer des maps alétoires et les créer ( paint etc)
 - Optionnel (Animation des attaques)
@@ -29,6 +32,7 @@ NOTRE JEU EST POUR VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console
 
 Pour utiliser notre projet js il faut tout simplement télécharger tout le dossier PokemonJs. En suite l'index fera le boulot lors du chargement de la page google. 
 La seule manip à faire c'est de télécharger l'extension webServer afin de pouvoir lancer les différents son. 
+Ou alors utiliser un serveur ou une appli qui simule un serveur comme WAMP.
 
 ## Contribueurs :
 
