@@ -163,15 +163,18 @@ function creerPokemon(){
 
 function choisirPokemon(){
   
+  pokemonIa=Pikachu;
+  pokemonJoueur=Pikachu;
+
   loadedAssets.generiqueSong.pause();
   loadedAssets.generiqueSong.currentime=0;
-  loadedAssets.battleSong.play();
 
   var selection= document.querySelector('#selection');
   var titre = document.createElement("H3");
   var texte = document.createTextNode(nomJoueur+" veuillez choisir sur un pokémon puis choississez celui de votre adversaire ");
   titre.appendChild(texte);
   selection.appendChild(titre);
+  dessinerChoix();
 
  /**************************** AFFICHAGE SUR DEUX LIGNES LES IMAGES DES POKEMONS MAIS IL FAUT PASSER PAR SVG DONC ON FAIT PAS LE CLICK SUR IMAGE ******************************/
   /*selectPikachu.addEventListener("click", function(){
@@ -206,103 +209,129 @@ function choisirPokemon(){
 
   // Par défault au met pikachu aux deux joueurs
 
-  pokemonIa=Pikachu;
-  pokemonJoueur=Pikachu;
   document.getElementById('selectJoueur').addEventListener('change', function(e){
     switch (e.target.value){
 
       case "Pikachu" :
+        loadedAssets.pikachuCrie.play();
         pokemonJoueur= Pikachu;
         break;
 
       case "Evoli" :
+        loadedAssets.evoliCrie.play();
         pokemonJoueur= Evoli;
         break;
 
       case "Carapuce" :
+        loadedAssets.carapuceCrie.play();
         pokemonJoueur= Carapuce;
         break;
 
-      case "Salamèche" : 
+      case "Salamèche" :
+        loadedAssets.salamecheCrie.play();
         pokemonJoueur= Salameche;
         break;
 
       case "Bulbizarre":
+        loadedAssets.bulbizarreCrie.play();
         pokemonJoueur= Bulbizarre;
         break;
 
       case "Caninos" :
+        loadedAssets.caninosCrie.play();
         pokemonJoueur= Caninos;
         break;
 
       case "Taupiqueur" :
+        loadedAssets.taupiqueurCrie.play();
         pokemonJoueur= Taupiqueur;
         break;
 
       case "Miaouss" :
+        loadedAssets.miaoussCrie.play();
         pokemonJoueur= Miaouss;
         break;
 
       case "Chetiflor" :
+        loadedAssets.chetiflorCrie.play();
         pokemonJoueur= Chetiflor;
         break;
 
       case "Hypotrempe" :
+        loadedAssets.hypotrempeCrie.play();
         pokemonJoueur= Hypotrempe;
         break;
     }
+      dessinerChoix();
       console.log("PokemonJoueur : "+pokemonJoueur);
   });
 
   document.getElementById('selectIa').addEventListener('change', function(e){
-
     switch (e.target.value){
 
       case "Pikachu" :
+        loadedAssets.pikachuCrie.play();
         pokemonIa= Pikachu;
         break;
 
       case "Evoli" :
+        loadedAssets.evoliCrie.play();
         pokemonIa= Evoli;
         break;
 
       case "Carapuce" :
+        loadedAssets.carapuceCrie.play();
         pokemonIa= Carapuce;
         break;
 
       case "Salamèche" : 
+        loadedAssets.salamecheCrie.play();
         pokemonIa= Salameche;
         break;
 
       case "Bulbizarre" :
+        loadedAssets.bulbizarreCrie.play();
         pokemonIa= Bulbizarre;
         break;
 
       case "Caninos" :
+        loadedAssets.caninosCrie.play();
         pokemonIa= Caninos;
         break;
 
       case "Taupiqueur" :
+        loadedAssets.taupiqueurCrie.play();
         pokemonIa= Taupiqueur;
         break;
 
       case "Miaouss" :
+        loadedAssets.miaoussCrie.play();
         pokemonIa= Miaouss;
         break;
 
       case "Chetiflor" :
+        loadedAssets.chetiflorCrie.play();
         pokemonIa= Chetiflor;
         break;
 
       case "Hypotrempe" :
+        loadedAssets.hypotrempeCrie.play();
         pokemonIa= Hypotrempe;
         break;
     }
+      dessinerChoix();
       console.log("PokemonIa : "+pokemonIa);  
   });
 }
 
- function validerChoix(e){
+function dessinerChoix(){
+
+  // On efface le canvas puis on dessine les pokémons à certaines coordonnées
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(pokemonJoueur.imageFront,50,250);
+  ctx.drawImage(pokemonIa.imageFront,400,250);
+}
+function validerChoix(e){
   e.preventDefault();
   genererMap();
 }
@@ -325,6 +354,7 @@ function genererMap(){
 
 function lancerCombat(){
   
+  loadedAssets.battleSong.play();
   attaqueJ1 = choisirAttaque(pokemonJoueur);
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
     calculDegats(attaqueJ1,pokemonIa);

@@ -10,10 +10,9 @@ Le but de notre projet est de rendre le combat dynamique et donc de ne pas se li
 
 ## Bug actuelle :
 
-NOTRE JEU EST POUR VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console 
+NOTRE JEU EST POUR L'INSTANT VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console 
 
 - Dans le cas ou les deux pokémons meurt donc en cas d'égalité ce qui n'est normalement pas possible les deux écrans s'affichent (victoire, défaite);
-- Affichage des image de pokémon en fonction des pokémon choisis
 
 ## Fonctionnel :
 
@@ -21,6 +20,8 @@ NOTRE JEU EST POUR VIABLE QUE SUR LA CONSOLE --> Inspecter --> Console
 - Image/son load --> Ok 
 - Tout les pokémons on était crée --> Ok
 - Selection des pokemons --> Ok
+- Affichage des pokémons en fonction du select --> Ok           
+- Cris des pokémons lors de la selection --> Ok
 
 ## Manque :
 
