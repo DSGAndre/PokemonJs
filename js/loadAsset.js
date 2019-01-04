@@ -33,12 +33,34 @@ var assetsToLoadURLs = {
     imageTaupiqueurF: { url: './assets/img/front/taupiqueurF.png' },
     imageTaupiqueurB: { url: './assets/img/back/taupiqueurB.png' },
 
+<<<<<<< HEAD
     battleSong: { url: './assets/mp3/battle.mp3', buffer: true, loop: true, volume: 0.5 },
     selectionSong: {url: './assets/mp3/selection.wav',buffer: true, loop:true, volume:0.9},
     generiqueSong: { url: './assets/mp3/generique.mp3', buffer: true, loop: true, volume: 0.5 },
     victorySong: {url: './assets/mp3/victory.mp3',buffer: true, loop:true, volume:0.5},
     defeatSong : {url: './assets/mp3/defeat.mp3',buffer: true, loop:true, volume:0.5}
    
+=======
+    fond :{ url:'./assets/map/fond.png'},
+
+    battleSong: { url: './assets/mp3/battle.mp3', buffer: false, loop: true, volume: 0.5 },
+    generiqueSong: { url: './assets/mp3/generique.mp3', buffer: false, loop: true, volume: 0.5 },
+    victorySong: {url: './assets/mp3/victory.mp3',buffer: false, loop:true, volume:0.5 },
+    defeatSong : {url: './assets/mp3/defeat.mp3',buffer: false, loop:true, volume:0.5 },
+
+    pikachuCrie: { url: './assets/cries/pikachu.mp3',buffer: false, loop:false, volume:0.5 },
+    caninosCrie: { url: './assets/cries/caninos.mp3',buffer: false, loop:false, volume:0.5 },
+    carapuceCrie: { url: './assets/cries/carapuce.mp3',buffer: false, loop:false, volume:0.5 },
+    chetiflorCrie: { url: './assets/cries/chetiflor.mp3',buffer: false, loop:false, volume:0.5 },
+    evoliCrie: { url: './assets/cries/evoli.mp3',buffer: false, loop:false, volume:0.5 },
+    hypotrempeCrie: { url: './assets/cries/hypotrempe.mp3',buffer: false, loop:false, volume:0.5 },
+    miaoussCrie: { url: './assets/cries/miaouss.mp3',buffer: false, loop:false, volume:0.5 },
+    salamecheCrie: { url: './assets/cries/salameche.mp3',buffer: false, loop:false, volume:0.5 },
+    taupiqueurCrie: { url: './assets/cries/taupiqueur.mp3',buffer: false, loop:false, volume:0.5 },
+    bulbizarreCrie: { url: './assets/cries/bulbizarre.mp3',buffer: false, loop:false, volume:0.5 }
+   
+
+>>>>>>> Développement
 };
 
 var loadedAssets;

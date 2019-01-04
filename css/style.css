@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #myCanvas {
     border:1px solid;
@@ -38,6 +39,92 @@ h1{
 	 margin:0 auto;
 }
 
+=======
+#myCanvas{
+    margin: 0;
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 1px solid grey;
+  }
+
+h1{
+  text-align: center;
+  margin-top: 0px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+} 
+
+#nomJoueur{
+  width: 1000px;
+  text-align: center;
+  position: absolute;
+  margin: 10% auto;
+  width: 100%;
+  z-index:100;
+}
+
+#selection{
+   display: none;
+   width: 1000px;
+   text-align: center;
+   position: absolute;
+   margin: 10% auto;
+   width: 100%;
+   z-index:100;
+}
+
+#gameOver{
+   display: none;
+   width: 1000px;
+   text-align: center;
+   position: absolute;
+   margin: 10% auto;
+   width: 100%;
+  z-index:100;
+}
+
+#gagner{
+   display: none;
+   width: 1000px;
+   text-align: center;
+   position: absolute;
+   margin: 10% auto;
+   width: 100%;
+   z-index:100;
+}
+
+#selectJoueur{
+  text-align: center;
+  z-index: 100;
+  position: absolute;
+  margin-top: 10%;
+  margin-left:-25%;
+  border: 2px dotted orange;
+}
+
+#selectIa{
+  text-align: center;
+  z-index: 100;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 15%;
+  border: 2px dotted orange;
+}
+
+ #form2{
+  position:absolute;
+  margin-top: 15%;
+  margin-left: 45%;
+ }
+
+>>>>>>> Développement
 :required{
    border: 2px dotted orange;
 }
