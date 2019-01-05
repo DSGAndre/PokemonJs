@@ -337,6 +337,7 @@ function validerChoix(e){
 }
 
 
+
 function genererMap(){
  
  document.querySelector('#selection').style.display="none";
@@ -354,27 +355,21 @@ function genererMap(){
 
 function lancerCombat(){
   
+  //ADDALEX
+  document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom;
+  document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom;
+  document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom;
+  document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom;
+  document.querySelector('#combat').style.visibility="visible";
+  //FINADD
+
   loadedAssets.battleSong.play();
-  attaqueJ1 = choisirAttaque(pokemonJoueur);
-  if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
-    calculDegats(attaqueJ1,pokemonIa);
-    if(pokemonIaEstVivant(pokemonIa))
-      calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-  }
-  else {
-    calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-    if(pokemonJoueurEstVivant(pokemonJoueur))
-      calculDegats(attaqueJ1,pokemonIa);
-  }
-  // Animation de la barre de vie qui descend
-    nbCoups++;
-  // résolution du bug comme quoi l'ia est morte donc le combat s'arrête
-      if(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa)) lancerCombat(); 
-      else console.log("Combat fini");    
+   
 }
 
 function pokemonJoueurEstVivant(pokemon){
   if( pokemon.hp<=0){
+    document.querySelector('#combat').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
@@ -390,6 +385,7 @@ function pokemonJoueurEstVivant(pokemon){
 
 function pokemonIaEstVivant(pokemon){
   if( pokemon.hp<=0){
+    document.querySelector('#combat').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
@@ -406,20 +402,33 @@ function pokemonIaEstVivant(pokemon){
    return true;
 }
 
-function choisirAttaque(pokemon){
-  // Il faut afficher les attaque du pokemon donc surement changer la scène
-  // Ecouteur sur l'attaque qu'il faut choisir
-  //console.log(pokemon.attaque[0]);
-  var attaqueChoisie = pokemon.attaque[0];
-  
+
+function choisirAttaque(e){
+  //console.log(e.value);
+  var attaqueChoisie = pokemonJoueur.attaque[e.value];
   if(attaqueChoisie.capacite != 0){
     attaqueChoisie.capacite--;
-    return attaqueChoisie;
+    continueCombat(attaqueChoisie);
+  }
+}
+
+function continueCombat(attaqueJ){
+  attaqueJ1 = attaqueJ;
+  if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
+    calculDegats(attaqueJ1,pokemonIa);
+    if(pokemonIaEstVivant(pokemonIa))
+      calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
   }
   else {
-    //Choisir attaque d'un pokemon redemande de chosiir un autre attaque
-    choisirAttaque(pokemon);
+    calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+    if(pokemonJoueurEstVivant(pokemonJoueur))
+      calculDegats(attaqueJ1,pokemonIa);
   }
+  // Animation de la barre de vie qui descend
+    nbCoups++;
+  // résolution du bug comme quoi l'ia est morte donc le combat s'arrête
+      if(!(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa))) 
+        console.log("Combat fini");   
 }
 
 function calculDegats(attaque,pokemon){

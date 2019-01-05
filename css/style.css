@@ -85,3 +85,11 @@ img {
 :required{
    border: 2px dotted orange;
 }
+
+#combat{
+  z-index: 200;
+  position:absolute;
+  visibility: hidden;
+  margin-top: 40%;
+  margin-left: 60%;
+ }
