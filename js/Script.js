@@ -336,14 +336,38 @@ function validerChoix(e){
   genererMap();
 }
 
-
+function entierAleatoire(min, max)
+{
+ return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function genererMap(){
- 
- document.querySelector('#selection').style.display="none";
-  ctx.drawImage(pokemonIa.imageFront,60,150); 
-  ctx.drawImage(loadedAssets.fond,0,0);
+
+  //La variable contient un nombre aléatoire compris entre 1 et 3
+  var entier = entierAleatoire(1, 3);
+  
+  switch (entier) {
+    case 1:
+      ctx.drawImage(loadedAssets.fond,0,0);
+      break;
+
+    case 2:
+      ctx.drawImage(loadedAssets.fond2,0,0);
+      break;
+
+    case 3:
+      ctx.drawImage(loadedAssets.fond3,0,0);
+      break;
+  }
+
+  document.querySelector('#selection').style.display="none";
+  ctx.drawImage(pokemonIa.imageFront,425,70);
+
+  document.querySelector('#selection').style.display="none";
+  ctx.drawImage(pokemonJoueur.imageBack,60,150); 
+
   lancerCombat();
+
   // Affichage Pokemon Joueur
   // var afficheJoueur = new Image();
   // imageJoueur.src = "./assets/img/front/pikachuF.png";
@@ -402,7 +426,6 @@ function pokemonIaEstVivant(pokemon){
    return true;
 }
 
-
 function choisirAttaque(e){
   //console.log(e.value);
   var attaqueChoisie = pokemonJoueur.attaque[e.value];
@@ -439,7 +462,6 @@ function calculDegats(attaque,pokemon){
   pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5)*eff;
   // Animation barre de vie qui descend 
 }
-
 
 function efficacite(attaque,pokemon){
   switch (pokemon.type) {

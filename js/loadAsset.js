@@ -1,6 +1,5 @@
 window.onload = init;
 
-
 var assetsToLoadURLs = {
 
     imagePikachuF: { url: './assets/img/front/pikachuF.png' },
@@ -34,6 +33,8 @@ var assetsToLoadURLs = {
     imageTaupiqueurB: { url: './assets/img/back/taupiqueurB.png' },
 
     fond :{ url:'./assets/map/fond.png'},
+    fond2 :{ url:'./assets/map/fond2.png'},
+    fond3 :{ url:'./assets/map/fond3.png'},
 
     battleSong: { url: './assets/mp3/battle.mp3', buffer: false, loop: true, volume: 0.5 },
     generiqueSong: { url: './assets/mp3/generique.mp3', buffer: false, loop: true, volume: 0.5 },
