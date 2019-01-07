@@ -5,8 +5,8 @@ var assetsToLoadURLs = {
     imagePikachuF: { url: './assets/img/front/pikachuF.png' },
     imagePikachuB: { url :'./assets/img/back/pikachuB.png'},
 
-    imageSalemecheF: { url: './assets/img/front/salamecheF.png' },
-    imageSalemecheB: { url: './assets/img/back/salamecheB.png' },
+    imageSalamecheF: { url: './assets/img/front/salamecheF.png' },
+    imageSalamecheB: { url: './assets/img/back/salamecheB.png' },
 
     imageCarapuceF: { url: './assets/img/front/carapuceF.png' },
     imageCarapuceB: { url: './assets/img/back/carapuceB.png' },

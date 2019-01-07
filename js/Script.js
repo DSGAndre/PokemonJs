@@ -88,7 +88,7 @@ function creerPokemon(){
     Charge,
     Griffe,
     Deflagration = new Attaque("Déflagration",60,5,type.FEU)            
-    ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
+    ],loadedAssets.imageSalamecheF,loadedAssets.imageSalamecheB);
 
     Bulbizarre = new Pokemon("Bulbizarre",type.PLANTE,100,5,20,attaque = [
     FouetLiane,
@@ -147,7 +147,6 @@ function creerPokemon(){
     ],loadedAssets.imageTaupiqueurF,loadedAssets.imageTaupiqueurB);
 
     loadedAssets.generiqueSong.play();
-  // A remplir d'autre Pokémons
 }
 
  function chargerJeu(e){
@@ -370,7 +369,6 @@ function lancerCombat(){
   document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+pokemonJoueur.attaque[3].capacite+") ";
   document.querySelector('#combat').style.visibility="visible";
   
-
   loadedAssets.battleSong.play();
    
 }
