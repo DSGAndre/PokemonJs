@@ -176,22 +176,6 @@ function choisirPokemon(){
   selection.appendChild(titre);
   dessinerChoix();
 
- /**************************** AFFICHAGE SUR DEUX LIGNES LES IMAGES DES POKEMONS MAIS IL FAUT PASSER PAR SVG DONC ON FAIT PAS LE CLICK SUR IMAGE ******************************/
-  /*selectPikachu.addEventListener("click", function(){
-    pokemonJoueur=Pikachu;
-  });
-  var selectPikachu = ctx.drawImage(Pikachu.imageFront,50,200);
-  var selectEvoli = ctx.drawImage(Evoli.imageFront,150,200);
-  var selectCarapuce = ctx.drawImage(Carapuce.imageFront,250,200);
-  var selectSalameche = ctx.drawImage(Salameche.imageFront,350,200);
-  var selectBulbizarre = ctx.drawImage(Bulbizarre.imageFront,450,200);
-  var selectCaninos = ctx.drawImage(Caninos.imageFront,50,300);
-  var selectTaupiqueur = ctx.drawImage(Taupiqueur.imageFront,150,300);
-  var selectMiaouss = ctx.drawImage(Miaouss.imageFront,250,300);
-  var selectChetiflor = ctx.drawImage(Chetiflor.imageFront,350,300);
-  var selectHypotrempe = ctx.drawImage(Hypotrempe.imageFront,450,300);
-  */
-
   var listePokemon=[Pikachu.nom,Evoli.nom,Carapuce.nom,Salameche.nom,Bulbizarre.nom,Caninos.nom,Taupiqueur.nom,Miaouss.nom,Chetiflor.nom,Hypotrempe.nom];
   for(var i in listePokemon){
     var option = document.createElement('option');
@@ -327,7 +311,7 @@ function choisirPokemon(){
 function dessinerChoix(){
 
   // On efface le canvas puis on dessine les pokémons à certaines coordonnées
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(pokemonJoueur.imageFront,50,250);
   ctx.drawImage(pokemonIa.imageFront,400,250);
 }
@@ -397,6 +381,7 @@ function pokemonJoueurEstVivant(pokemon){
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     var defaite=document.querySelector('#gameOver');
     button.addEventListener("click",newGame);
     defaite.appendChild(button);
@@ -413,6 +398,7 @@ function pokemonIaEstVivant(pokemon){
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     var gagner= document.querySelector('#gagner');
     var textVictoire = document.createTextNode("Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer");
     gagner.appendChild(textVictoire);
