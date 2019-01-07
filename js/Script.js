@@ -71,7 +71,7 @@ function creerPokemon(){
     //nom, type, hp, vitesse, armure, attaque, imageFront, imageBack
     // nom, force, capacite, type
     Charge = new Attaque("Charge",20,30,type.NORMAL);
-    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
+    ViveAttaque = new Attaque("Vive-Attaque",35,20,type.NORMAL),
     FouetLiane = new Attaque("Fouet Liane",20,20,type.PLANTE),
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
     Flameche = new Attaque("Flamèche",30,20,type.FEU),
@@ -93,7 +93,7 @@ function creerPokemon(){
     Bulbizarre = new Pokemon("Bulbizarre",type.PLANTE,100,5,20,attaque = [
     FouetLiane,
     Charge,
-    Bélier = new Attaque("ViveAttaque",40,10,type.NORMAL),
+    Bélier = new Attaque("Bélier",40,10,type.NORMAL),
     CanonGraine = new Attaque("Canon Graine",60,5,type.PLANTE), 
       ],loadedAssets.imageBulbizarreF,loadedAssets.imageBulbizarreB);
 
@@ -361,6 +361,7 @@ function lancerCombat(){
   document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom+" ("+pokemonJoueur.attaque[2].capacite+") ";
   document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+pokemonJoueur.attaque[3].capacite+") ";
   document.querySelector('#combat').style.visibility="visible";
+  document.querySelector('#info').style.visibility="visible";
   
   loadedAssets.battleSong.play();
    
@@ -369,6 +370,7 @@ function lancerCombat(){
 function pokemonJoueurEstVivant(pokemon){
   if( pokemon.hp<=0){
     document.querySelector('#combat').style.visibility="hidden";
+    document.querySelector('#info').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
@@ -386,6 +388,7 @@ function pokemonJoueurEstVivant(pokemon){
 function pokemonIaEstVivant(pokemon){
   if( pokemon.hp<=0){
     document.querySelector('#combat').style.visibility="hidden";
+    document.querySelector('#info').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
@@ -429,17 +432,37 @@ function desactiveBouton(e) {
 }
 
 function continueCombat(attaqueJ){
+  document.querySelector('#info').innerHTML = "";
   attaqueJ1 = attaqueJ;
+  attaqueIaRandom = pokemonIa.attaque[Math.floor((Math.random() * 4))];
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
-    calculDegats(attaqueJ1,pokemonIa);
-    if(pokemonIaEstVivant(pokemonIa))
-      calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
+    infligeDegats(attaqueJ1,pokemonIa);
+    document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
+    document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
+    if(pokemonIaEstVivant(pokemonIa)){
+      infligeDegats(attaqueIaRandom,pokemonJoueur);
+      document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
+      document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
+    }
   }
   else {
+<<<<<<< HEAD
+    if(pokemonIaEstVivant(pokemonIa) && pokemonIaEstVivant(pokemonJoueur)){
+      infligeDegats(attaqueIaRandom,pokemonJoueur);
+      document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
+      document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
+      if(pokemonJoueurEstVivant(pokemonJoueur)){
+        infligeDegats(attaqueJ1,pokemonIa);
+        document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
+        document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
+      }
+    }
+=======
     if(pokemonIaEstVivant(pokemonIa) && pokemonIaEstVivant(pokemonJoueur))
     calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
     if(pokemonJoueurEstVivant(pokemonJoueur))
       calculDegats(attaqueJ1,pokemonIa);
+>>>>>>> 834af6c9cfad9556aa6b3ff20f1e55b7ec95279d
   }
   // Animation de la barre de vie qui descend
     nbCoups++;
@@ -447,13 +470,20 @@ function continueCombat(attaqueJ){
         console.log("Combat fini");   
 }
 
+
 function calculDegats(attaque,pokemon){
 
   var eff = efficacite(attaque,pokemon);
   console.log(attaque);
   console.log(pokemon);
-  pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5)*eff;
+  dmg = ((attaque.force-pokemon.armure)/5)*eff;
+  return dmg;
   // Animation barre de vie qui descend 
+}
+
+function infligeDegats(attaque,pokemon){
+  degats = calculDegats(attaque,pokemon);
+  pokemon.hp = pokemon.hp-degats;
 }
 
 function efficacite(attaque,pokemon){
