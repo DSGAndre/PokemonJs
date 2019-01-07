@@ -91,7 +91,7 @@ img {
   position:absolute;
   visibility: hidden;
   margin-top: 30%;
-  margin-left: 60%;
+  margin-left: 54%;
  }
 
  .atckB {
@@ -102,12 +102,27 @@ img {
 	background:#fff;
 	font:bold 13px Arial;
   color:#555;
-  min-width: 5em;
-  min-height: 5em;
+  width: 8.5em;
+  height: 5em;
   cursor: pointer;
 }
 
 .atckB:disabled {
   color:red;
   cursor: not-allowed;
+}
+
+#info {
+  z-index: 200;
+  position:absolute;
+  padding:6px 0 6px 0;
+	border-radius:2px;
+  background-color: rgb(245, 245, 245) ;
+  border: 2px solid lightgray;
+  margin-top: 28%;
+  margin-left: 15%;
+  padding: 10px;
+  height: 4em;
+  width: 25em;
+  visibility:hidden;
 }
