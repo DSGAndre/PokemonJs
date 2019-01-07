@@ -80,7 +80,7 @@ function creerPokemon(){
     Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
     ViveAttaque,
-    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),          
+    FatalFoudre = new Attaque("Fatal-Foudre",80,1,type.ELECTRIK),  //1 =>5        
     ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
     
     Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [
@@ -379,13 +379,13 @@ function genererMap(){
 
 function lancerCombat(){
   
-  //ADDALEX
-  document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom;
-  document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom;
-  document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom;
-  document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom;
+  
+  document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom+" ("+pokemonJoueur.attaque[0].capacite+") ";
+  document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom+" ("+pokemonJoueur.attaque[1].capacite+") ";
+  document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom+" ("+pokemonJoueur.attaque[2].capacite+") ";
+  document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+pokemonJoueur.attaque[3].capacite+") ";
   document.querySelector('#combat').style.visibility="visible";
-  //FINADD
+  
 
   loadedAssets.battleSong.play();
    
@@ -432,6 +432,22 @@ function choisirAttaque(e){
   if(attaqueChoisie.capacite != 0){
     attaqueChoisie.capacite--;
     continueCombat(attaqueChoisie);
+    switch(e.value){
+      case "0": document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "1": document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "2": document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "3": document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+attaqueChoisie.capacite+") "; break;
+    }
+    if(attaqueChoisie.capacite == 0) desactiveBouton(e);
+  }
+}
+
+function desactiveBouton(e) {
+  switch(e.value){
+    case "0": document.querySelector('#atck1').disabled = true; break;
+    case "1": document.querySelector('#atck2').disabled = true; break;
+    case "2": document.querySelector('#atck3').disabled = true; break;
+    case "3": document.querySelector('#atck4').disabled = true; break;
   }
 }
 

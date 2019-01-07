@@ -93,3 +93,27 @@ img {
   margin-top: 40%;
   margin-left: 60%;
  }
+
+ .atckB {
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:2px;
+	box-shadow:2px 2px 6px #999;
+	background:#fff;
+	font:bold 13px Arial;
+  color:#555;
+  min-width: 5em;
+  cursor: pointer;
+}
+
+.atckB:disabled {
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:2px;
+	box-shadow:2px 2px 6px #999;
+	background:#fff;
+	font:bold 13px Arial;
+  color:red;
+  min-width: 5em;
+  cursor: not-allowed;
+}
