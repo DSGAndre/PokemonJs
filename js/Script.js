@@ -88,7 +88,7 @@ function creerPokemon(){
     Charge,
     Griffe,
     Deflagration = new Attaque("Déflagration",60,5,type.FEU)            
-    ],loadedAssets.imageSalamecheF,loadedAssets.imageSalamecheB);
+    ],loadedAssets.imageSalamecheF,loadedAssets.imageSalamecheB );
 
     Bulbizarre = new Pokemon("Bulbizarre",type.PLANTE,100,5,20,attaque = [
     FouetLiane,
@@ -351,13 +351,6 @@ function genererMap(){
 
   lancerCombat();
 
-  // Affichage Pokemon Joueur
-  // var afficheJoueur = new Image();
-  // imageJoueur.src = "./assets/img/front/pikachuF.png";
-  // imageJoueur.onload = function(){
-  //   ctx.drawImage(imageJoueur,425,70);   
-  // }
-
 }
 
 function lancerCombat(){
@@ -443,13 +436,13 @@ function continueCombat(attaqueJ){
       calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
   }
   else {
+    if(pokemonIaEstVivant(pokemonIa) && pokemonIaEstVivant(pokemonJoueur))
     calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
     if(pokemonJoueurEstVivant(pokemonJoueur))
       calculDegats(attaqueJ1,pokemonIa);
   }
   // Animation de la barre de vie qui descend
     nbCoups++;
-  // résolution du bug comme quoi l'ia est morte donc le combat s'arrête
       if(!(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa))) 
         console.log("Combat fini");   
 }
