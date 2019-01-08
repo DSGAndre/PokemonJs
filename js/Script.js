@@ -162,8 +162,8 @@ function creerPokemon(){
 
 function choisirPokemon(){
   
-  pokemonIa=Pikachu;
-  pokemonJoueur=Pikachu;
+  pokemonIa=Object.assign({}, Pikachu);
+  pokemonJoueur=Object.assign({}, Pikachu);
 
   loadedAssets.generiqueSong.pause();
   loadedAssets.generiqueSong.currentime=0;
@@ -197,52 +197,52 @@ function choisirPokemon(){
 
       case "Pikachu" :
         loadedAssets.pikachuCrie.play();
-        pokemonJoueur= Pikachu;
+        pokemonJoueur= Object.assign({}, Pikachu);
         break;
 
       case "Evoli" :
         loadedAssets.evoliCrie.play();
-        pokemonJoueur= Evoli;
+        pokemonJoueur= Object.assign({}, Evoli);
         break;
 
       case "Carapuce" :
         loadedAssets.carapuceCrie.play();
-        pokemonJoueur= Carapuce;
+        pokemonJoueur= Object.assign({}, Carapuce);
         break;
 
       case "Salamèche" :
         loadedAssets.salamecheCrie.play();
-        pokemonJoueur= Salameche;
+        pokemonJoueur= Object.assign({}, Salameche);
         break;
 
       case "Bulbizarre":
         loadedAssets.bulbizarreCrie.play();
-        pokemonJoueur= Bulbizarre;
+        pokemonJoueur= Object.assign({}, Bulbizarre);
         break;
 
       case "Caninos" :
         loadedAssets.caninosCrie.play();
-        pokemonJoueur= Caninos;
+        pokemonJoueur= Object.assign({}, Caninos);
         break;
 
       case "Taupiqueur" :
         loadedAssets.taupiqueurCrie.play();
-        pokemonJoueur= Taupiqueur;
+        pokemonJoueur= Object.assign({}, Taupiqueur);
         break;
 
       case "Miaouss" :
         loadedAssets.miaoussCrie.play();
-        pokemonJoueur= Miaouss;
+        pokemonJoueur= Object.assign({}, Miaouss);
         break;
 
       case "Chetiflor" :
         loadedAssets.chetiflorCrie.play();
-        pokemonJoueur= Chetiflor;
+        pokemonJoueur= Object.assign({}, Chetiflor);
         break;
 
       case "Hypotrempe" :
         loadedAssets.hypotrempeCrie.play();
-        pokemonJoueur= Hypotrempe;
+        pokemonJoueur= Object.assign({}, Hypotrempe);
         break;
     }
       dessinerChoix();
@@ -254,52 +254,52 @@ function choisirPokemon(){
 
       case "Pikachu" :
         loadedAssets.pikachuCrie.play();
-        pokemonIa= Pikachu;
+        pokemonIa= Object.assign({}, Pikachu);
         break;
 
       case "Evoli" :
         loadedAssets.evoliCrie.play();
-        pokemonIa= Evoli;
+        pokemonIa= Object.assign({}, Evoli);
         break;
 
       case "Carapuce" :
         loadedAssets.carapuceCrie.play();
-        pokemonIa= Carapuce;
+        pokemonIa= Object.assign({}, Carapuce);
         break;
 
       case "Salamèche" : 
         loadedAssets.salamecheCrie.play();
-        pokemonIa= Salameche;
+        pokemonIa= Object.assign({}, Salameche);
         break;
 
       case "Bulbizarre" :
         loadedAssets.bulbizarreCrie.play();
-        pokemonIa= Bulbizarre;
+        pokemonIa= Object.assign({}, Bulbizarre);
         break;
 
       case "Caninos" :
         loadedAssets.caninosCrie.play();
-        pokemonIa= Caninos;
+        pokemonIa= Object.assign({}, Caninos);
         break;
 
       case "Taupiqueur" :
         loadedAssets.taupiqueurCrie.play();
-        pokemonIa= Taupiqueur;
+        pokemonIa= Object.assign({}, Taupiqueur);
         break;
 
       case "Miaouss" :
         loadedAssets.miaoussCrie.play();
-        pokemonIa= Miaouss;
+        pokemonIa= Object.assign({}, Miaouss);
         break;
 
       case "Chetiflor" :
         loadedAssets.chetiflorCrie.play();
-        pokemonIa= Chetiflor;
+        pokemonIa= Object.assign({}, Chetiflor);
         break;
 
       case "Hypotrempe" :
         loadedAssets.hypotrempeCrie.play();
-        pokemonIa= Hypotrempe;
+        pokemonIa= Object.assign({}, Hypotrempe);
         break;
     }
       dessinerChoix();
@@ -436,11 +436,13 @@ function continueCombat(attaqueJ){
   attaqueJ1 = attaqueJ;
   attaqueIaRandom = pokemonIa.attaque[Math.floor((Math.random() * 4))];
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
+    console.log("Pkmn joueur attaque"); 
     infligeDegats(attaqueJ1,pokemonIa);
     nbCoups++;
     document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
     document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
     if(pokemonIaEstVivant(pokemonIa)){
+      console.log("Pkmn ia attaque"); 
       infligeDegats(attaqueIaRandom,pokemonJoueur);
       document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
       document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
