@@ -7,6 +7,8 @@ var ImageIA;
 var ImageJoueur;
 var nbCoups=0;
 var button;
+var vieInitialJoueur;
+var vieInitialIA;
 button=document.createElement("button");
 button.innerText="Réesayer";
 let canvas,ctx;
@@ -316,7 +318,53 @@ function dessinerChoix(){
 }
 function validerChoix(e){
   e.preventDefault();
+  vieInitialJoueur = pokemonJoueur.hp;
+  vieInitialIA = pokemonIa.hp;
   genererMap();
+}
+
+// var selection= document.querySelector('#infoPokemon');
+// var texte = document.createTextNode(pokemonJoueur.nom);
+// selection.appendChild(texte);
+
+function barreJoueur()
+{
+  console.log("vie Initial Joueur : "+vieInitialJoueur);
+  console.log("vie Pokemon Joueur : "+pokemonJoueur.hp);
+  ctx.fillStyle = "lightgray";
+  ctx.fillRect(120,120,200,80);
+
+  if(pokemonJoueur.hp >= vieInitialJoueur/2) {
+    ctx.fillStyle="green";
+    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+  } else if(pokemonJoueur.hp < vieInitialJoueur/2 && pokemonJoueur.hp > vieInitialJoueur/5) {
+    ctx.fillStyle="orange";
+    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+  } else {
+    ctx.fillStyle="red";
+    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+  }
+}
+
+function barreIA()
+{
+  console.log("vie Initial IA : "+vieInitialIA);
+  console.log("vie Pokemon IA : "+pokemonIa.hp);
+  ctx.fillStyle = "lightgray";
+  ctx.fillRect(420,350,200,80);
+
+  if(pokemonIa.hp >= vieInitialIA/2) {
+    ctx.fillStyle="green";
+    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+
+  } else if(pokemonIa.hp < vieInitialIA/2 && pokemonIa.hp > vieInitialIA/5) {
+    ctx.fillStyle="orange";
+    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+
+  } else {
+    ctx.fillStyle="red";
+    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+  }
 }
 
 function entierAleatoire(min, max)
@@ -326,12 +374,12 @@ function entierAleatoire(min, max)
 
 function genererMap(){
 
-  //La variable contient un nombre aléatoire compris entre 1 et 3
-  var entier = entierAleatoire(1, 3);
+  //La variable contient un nombre aléatoire compris entre 1 et 8
+  var entier = entierAleatoire(1, 8);
   
   switch (entier) {
     case 1:
-      ctx.drawImage(loadedAssets.fond,0,0);
+      ctx.drawImage(loadedAssets.fond1,0,0);
       break;
 
     case 2:
@@ -341,13 +389,36 @@ function genererMap(){
     case 3:
       ctx.drawImage(loadedAssets.fond3,0,0);
       break;
+
+    case 4:
+      ctx.drawImage(loadedAssets.fond4,0,0);
+      break;
+
+    case 5:
+      ctx.drawImage(loadedAssets.fond5,0,0);
+      break;
+
+    case 6:
+      ctx.drawImage(loadedAssets.fond6,0,0);
+      break;
+
+    case 7:
+      ctx.drawImage(loadedAssets.fond7,0,0);
+      break;
+
+    case 8:
+      ctx.drawImage(loadedAssets.fond8,0,0);
+      break;
   }
 
   document.querySelector('#selection').style.display="none";
-  ctx.drawImage(pokemonIa.imageFront,425,70);
+  ctx.drawImage(pokemonIa.imageFront,415,70);
 
   document.querySelector('#selection').style.display="none";
-  ctx.drawImage(pokemonJoueur.imageBack,60,150); 
+  ctx.drawImage(pokemonJoueur.imageBack,60,225); 
+
+  barreIA();
+  barreJoueur();
 
   lancerCombat();
 
@@ -482,6 +553,10 @@ function calculDegats(attaque,pokemon){
 function infligeDegats(attaque,pokemon){
   degats = calculDegats(attaque,pokemon);
   pokemon.hp = pokemon.hp-degats;
+
+  barreIA();
+  barreJoueur();
+
   console.log("dmg");
 }
 

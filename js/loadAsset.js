@@ -35,6 +35,11 @@ var assetsToLoadURLs = {
     fond :{ url:'./assets/map/fond.png'},
     fond2 :{ url:'./assets/map/fond2.png'},
     fond3 :{ url:'./assets/map/fond3.png'},
+    fond4 :{ url:'./assets/map/fond4.png'},
+    fond5 :{ url:'./assets/map/fond5.png'},
+    fond6 :{ url:'./assets/map/fond6.png'},
+    fond7 :{ url:'./assets/map/fond7.png'},
+    fond8 :{ url:'./assets/map/fond8.png'},
 
     battleSong: { url: './assets/mp3/battle.mp3', buffer: false, loop: true, volume: 0.5 },
     generiqueSong: { url: './assets/mp3/generique.mp3', buffer: false, loop: true, volume: 0.5 },
