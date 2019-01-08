@@ -76,14 +76,14 @@ function creerPokemon(){
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
     Flameche = new Attaque("Flamèche",30,20,type.FEU),
     
-    Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [
+    Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [ 
     Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
     ViveAttaque,
-    FatalFoudre = new Attaque("Fatal-Foudre",80,1,type.ELECTRIK),  //1 =>5        
+    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),         
     ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
     
-    Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [
+    Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [ 
     Flameche,
     Charge,
     Griffe,
@@ -437,37 +437,33 @@ function continueCombat(attaqueJ){
   attaqueIaRandom = pokemonIa.attaque[Math.floor((Math.random() * 4))];
   if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
     infligeDegats(attaqueJ1,pokemonIa);
+    nbCoups++;
     document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
     document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
     if(pokemonIaEstVivant(pokemonIa)){
       infligeDegats(attaqueIaRandom,pokemonJoueur);
       document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
       document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
+      if(!(pokemonJoueurEstVivant(pokemonJoueur))){
+        console.log("Combat fini"); 
+      }
     }
   }
   else {
-<<<<<<< HEAD
-    if(pokemonIaEstVivant(pokemonIa) && pokemonIaEstVivant(pokemonJoueur)){
       infligeDegats(attaqueIaRandom,pokemonJoueur);
       document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
       document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
       if(pokemonJoueurEstVivant(pokemonJoueur)){
         infligeDegats(attaqueJ1,pokemonIa);
+        nbCoups++;
         document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
         document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
+        if(!(pokemonIaEstVivant(pokemonIa))){
+          console.log("Combat fini"); 
+        }
       }
-    }
-=======
-    if(pokemonIaEstVivant(pokemonIa) && pokemonIaEstVivant(pokemonJoueur))
-    calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-    if(pokemonJoueurEstVivant(pokemonJoueur))
-      calculDegats(attaqueJ1,pokemonIa);
->>>>>>> 834af6c9cfad9556aa6b3ff20f1e55b7ec95279d
   }
   // Animation de la barre de vie qui descend
-    nbCoups++;
-      if(!(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa))) 
-        console.log("Combat fini");   
 }
 
 
@@ -484,6 +480,7 @@ function calculDegats(attaque,pokemon){
 function infligeDegats(attaque,pokemon){
   degats = calculDegats(attaque,pokemon);
   pokemon.hp = pokemon.hp-degats;
+  console.log("dmg");
 }
 
 function efficacite(attaque,pokemon){
