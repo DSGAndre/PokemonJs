@@ -332,17 +332,17 @@ function barreJoueur()
   console.log("vie Initial Joueur : "+vieInitialJoueur);
   console.log("vie Pokemon Joueur : "+pokemonJoueur.hp);
   ctx.fillStyle = "lightgray";
-  ctx.fillRect(120,120,200,80);
+  ctx.fillRect(420,350,200,80); //120,120
 
   if(pokemonJoueur.hp >= vieInitialJoueur/2) {
     ctx.fillStyle="green";
-    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+    ctx.fillRect(450,380,130*(pokemonJoueur.hp/vieInitialJoueur),15); //150,150
   } else if(pokemonJoueur.hp < vieInitialJoueur/2 && pokemonJoueur.hp > vieInitialJoueur/5) {
     ctx.fillStyle="orange";
-    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+    ctx.fillRect(450,380,130*(pokemonJoueur.hp/vieInitialJoueur),15);
   } else {
     ctx.fillStyle="red";
-    ctx.fillRect(150,150,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+    ctx.fillRect(450,380,130*(pokemonJoueur.hp/vieInitialJoueur),15);
   }
 }
 
@@ -351,19 +351,19 @@ function barreIA()
   console.log("vie Initial IA : "+vieInitialIA);
   console.log("vie Pokemon IA : "+pokemonIa.hp);
   ctx.fillStyle = "lightgray";
-  ctx.fillRect(420,350,200,80);
+  ctx.fillRect(120,120,200,80); //420,350
 
   if(pokemonIa.hp >= vieInitialIA/2) {
     ctx.fillStyle="green";
-    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+    ctx.fillRect(150,150,130*(pokemonIa.hp/vieInitialIA),15); //450,380
 
   } else if(pokemonIa.hp < vieInitialIA/2 && pokemonIa.hp > vieInitialIA/5) {
     ctx.fillStyle="orange";
-    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+    ctx.fillRect(150,150,130*(pokemonIa.hp/vieInitialIA),15);
 
   } else {
     ctx.fillStyle="red";
-    ctx.fillRect(450,380,130*(pokemonIa.hp/vieInitialIA),15);
+    ctx.fillRect(150,150,130*(pokemonIa.hp/vieInitialIA),15);
   }
 }
 
