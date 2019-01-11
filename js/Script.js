@@ -155,9 +155,8 @@ function creerPokemon(){
   e.preventDefault(); 
   loadedAssets.defeatSong.currentime=0;
   loadedAssets.victorySong.currentime=0;
-  nomJoueur = document.querySelector("#pseudo").value; //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
+  nomJoueur = document.querySelector("#pseudo").value; 
   console.log("Nom égal = " +nomJoueur);
-  // on cache la div
   document.querySelector("#nomJoueur").style.display="none";
   choisirPokemon();
 }
@@ -323,10 +322,6 @@ function validerChoix(e){
   genererMap();
 }
 
-// var selection= document.querySelector('#infoPokemon');
-// var texte = document.createTextNode(pokemonJoueur.nom);
-// selection.appendChild(texte);
-
 function barreJoueur()
 {
   console.log("vie Initial Joueur : "+vieInitialJoueur);
@@ -374,7 +369,6 @@ function entierAleatoire(min, max)
 
 function genererMap(){
 
-  //La variable contient un nombre aléatoire compris entre 1 et 8
   var entier = entierAleatoire(1, 8);
   
   switch (entier) {
