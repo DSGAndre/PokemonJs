@@ -1,3 +1,7 @@
+html { 
+  overflow-x: hidden; 
+}
+
 #myCanvas{
     margin: 0;
     position: absolute;
@@ -88,10 +92,10 @@ img {
 
 #combat{
   z-index: 200;
-  position:absolute;
   visibility: hidden;
   margin-top: 30%;
   margin-left: 54%;
+  position: absolute;
  }
 
  .atckB {

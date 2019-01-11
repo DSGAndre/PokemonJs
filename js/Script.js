@@ -332,6 +332,8 @@ function barreJoueur()
   console.log("vie Initial Joueur : "+vieInitialJoueur);
   console.log("vie Pokemon Joueur : "+pokemonJoueur.hp);
   ctx.fillStyle = "lightgray";
+  ctx.fillRect(418,348,204,84); //120,120
+  ctx.fillStyle = "white";
   ctx.fillRect(420,350,200,80); //120,120
 
   if(pokemonJoueur.hp >= vieInitialJoueur/2) {
@@ -351,6 +353,8 @@ function barreIA()
   console.log("vie Initial IA : "+vieInitialIA);
   console.log("vie Pokemon IA : "+pokemonIa.hp);
   ctx.fillStyle = "lightgray";
+  ctx.fillRect(118,118,204,84); //120,120
+  ctx.fillStyle = "white";
   ctx.fillRect(120,120,200,80); //420,350
 
   if(pokemonIa.hp >= vieInitialIA/2) {
