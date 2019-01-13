@@ -1,13 +1,12 @@
 window.onload = init;
 
-
 var assetsToLoadURLs = {
 
     imagePikachuF: { url: './assets/img/front/pikachuF.png' },
     imagePikachuB: { url :'./assets/img/back/pikachuB.png'},
 
-    imageSalemecheF: { url: './assets/img/front/salamecheF.png' },
-    imageSalemecheB: { url: './assets/img/back/salamecheB.png' },
+    imageSalamecheF: { url: './assets/img/front/salamecheF.png' },
+    imageSalamecheB: { url: './assets/img/back/salamecheB.png' },
 
     imageCarapuceF: { url: './assets/img/front/carapuceF.png' },
     imageCarapuceB: { url: './assets/img/back/carapuceB.png' },
@@ -33,15 +32,14 @@ var assetsToLoadURLs = {
     imageTaupiqueurF: { url: './assets/img/front/taupiqueurF.png' },
     imageTaupiqueurB: { url: './assets/img/back/taupiqueurB.png' },
 
-<<<<<<< HEAD
-    battleSong: { url: './assets/mp3/battle.mp3', buffer: true, loop: true, volume: 0.5 },
-    selectionSong: {url: './assets/mp3/selection.wav',buffer: true, loop:true, volume:0.9},
-    generiqueSong: { url: './assets/mp3/generique.mp3', buffer: true, loop: true, volume: 0.5 },
-    victorySong: {url: './assets/mp3/victory.mp3',buffer: true, loop:true, volume:0.5},
-    defeatSong : {url: './assets/mp3/defeat.mp3',buffer: true, loop:true, volume:0.5}
-   
-=======
     fond :{ url:'./assets/map/fond.png'},
+    fond2 :{ url:'./assets/map/fond2.png'},
+    fond3 :{ url:'./assets/map/fond3.png'},
+    fond4 :{ url:'./assets/map/fond4.png'},
+    fond5 :{ url:'./assets/map/fond5.png'},
+    fond6 :{ url:'./assets/map/fond6.png'},
+    fond7 :{ url:'./assets/map/fond7.png'},
+    fond8 :{ url:'./assets/map/fond8.png'},
 
     battleSong: { url: './assets/mp3/battle.mp3', buffer: false, loop: true, volume: 0.5 },
     generiqueSong: { url: './assets/mp3/generique.mp3', buffer: false, loop: true, volume: 0.5 },
@@ -60,7 +58,6 @@ var assetsToLoadURLs = {
     bulbizarreCrie: { url: './assets/cries/bulbizarre.mp3',buffer: false, loop:false, volume:0.5 }
    
 
->>>>>>> Développement
 };
 
 var loadedAssets;

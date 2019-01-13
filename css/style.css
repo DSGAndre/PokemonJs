@@ -1,45 +1,7 @@
-<<<<<<< HEAD
-
-#myCanvas {
-    border:1px solid;
-    background-color:lightGrey;
-    display: block;
-    width:1000px;
-    height:800px;
-    margin:0 auto;
-  }
-
-h1{
-	text-align: center;
-	margin-top: 0px;
+html { 
+  overflow-x: hidden; 
 }
 
-/*img {
-    max-width: 100%;
-    height: auto;
-} Normalement utiliser pour resize l'image mais ne marche pas */
-
-#nomJoueur{
-    width:1000px;
- 	text-align: center;
- 	margin:0 auto;
-  }
-
-#gameOver{
-	 display: none;
-	 width:1000px;
-	 text-align: center;
-	 margin:0 auto;
-}
-
-#gagner{
-	 display: none;
-	 width:1000px;
-	 text-align: center;
-	 margin:0 auto;
-}
-
-=======
 #myCanvas{
     margin: 0;
     position: absolute;
@@ -124,7 +86,47 @@ img {
   margin-left: 45%;
  }
 
->>>>>>> Développement
 :required{
    border: 2px dotted orange;
+}
+
+#combat{
+  z-index: 200;
+  visibility: hidden;
+  margin-top: 34.5%;
+  margin-left: 60%;
+  position: absolute;
+ }
+
+ .atckB {
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:5px;
+	box-shadow:2px 2px 6px #999;
+	background:#fff;
+	font:bold 13px Arial;
+  color:#555;
+  width: 8.5em;
+  height: 5em;
+  cursor: pointer;
+}
+
+.atckB:disabled {
+  color:red;
+  cursor: not-allowed;
+}
+
+#info {
+  z-index: 200;
+  position:absolute;
+  padding:6px 0 6px 0;
+	border-radius:5px;
+  background-color: rgb(245, 245, 245) ;
+  border: 2px solid lightgray;
+  margin-top: 33%;
+  margin-left: 15%;
+  padding: 10px;
+  height: 7.5%;
+  width: 25%;
+  visibility:hidden;
 }

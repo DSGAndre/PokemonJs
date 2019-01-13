@@ -3,27 +3,16 @@ var pokemonJoueur;
 var attaqueJ1;
 var pokemonIa;
 var attaqueIa;
-<<<<<<< HEAD
-var nbCoups=0;
-var button;
-button=document.createElement("input");
-button.setAttribute("type", "button");
-button.setAttribute("value","Reesayer");
-button.setAttribute("onClick","location.href=location.href");
-let canvas,ctx;
-
-
-
-=======
 var ImageIA;
 var ImageJoueur;
 var nbCoups=0;
 var button;
+var vieInitialJoueur;
+var vieInitialIA;
 button=document.createElement("button");
 button.innerText="Réesayer";
 let canvas,ctx;
 
->>>>>>> Développement
 const type ={ 
   
   EAU:"Eau",
@@ -32,11 +21,7 @@ const type ={
   ELECTRIK:"Electrik", 
   SOL:"Sol",
   NORMAL:"NORMAL"
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> Développement
 };
 
 class Attaque {
@@ -64,10 +49,6 @@ class Pokemon {
   }
 }
 
-<<<<<<< HEAD
-function start(){
-  canvas = document.querySelector("#myCanvas");
-=======
 function newGame(){
   
   location.reload();
@@ -78,7 +59,6 @@ function start(){
   canvas = document.querySelector("#myCanvas");
   canvas.width = 640;
   canvas.height = 480;
->>>>>>> Développement
   ctx = canvas.getContext("2d");
   ctx.beginPath();
   document.querySelector("#gameOver").style.display="none";
@@ -86,74 +66,36 @@ function start(){
   creerPokemon();
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Développement
 function creerPokemon(){
   
     console.log("Création des pokemons ");
     // On créer l'attaque charge car elle est commune à plusieurs Pokemon
-<<<<<<< HEAD
-    Charge = new Attaque("Charge",20,30,type.NORMAL);
-=======
     //nom, type, hp, vitesse, armure, attaque, imageFront, imageBack
     // nom, force, capacite, type
     Charge = new Attaque("Charge",20,30,type.NORMAL);
-    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
+    ViveAttaque = new Attaque("Vive-Attaque",35,20,type.NORMAL),
     FouetLiane = new Attaque("Fouet Liane",20,20,type.PLANTE),
     Griffe = new Attaque("Griffe",30,20,type.NORMAL),
     Flameche = new Attaque("Flamèche",30,20,type.FEU),
->>>>>>> Développement
     
-    Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [
+    Pikachu = new Pokemon("Pikachu",type.ELECTRIK,50,15,5, attaque= [ 
     Eclair = new Attaque("Eclair",30,20,type.ELECTRIK),
     Charge,
-<<<<<<< HEAD
-    ViveAttaque = new Attaque("ViveAttaque",35,20,type.NORMAL),
-    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),          
-    ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
-    
-    Salameche = new Pokemon("Salamèche",type.FEU,100,15,5, attaque= [
-    Flameche = new Attaque("Flamèche",30,20,type.FEU),
-    Charge,
-    Griffe = new Attaque("Griffe",30,20,type.NORMAL),
-    Deflagration = new Attaque("Déflagration",80,5,type.FEU)            
-    ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
-    loadedAssets.generiqueSong.play();
-    chargerJeu();
-  // A remplir d'autre Pokémons
-}
-//document.querySelector("form").onsubmit =
- function chargerJeu(){
-  
-  loadedAssets.defeatSong.currentime=0;
-  loadedAssets.victorySong.currentime=0;
-  nomJoueur = document.querySelector("#pseudo").value;
-  while(nomJoueur =="") chargerJeu();   //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
-  console.log("Nom égal = " +nomJoueur);
-  // on cache la div
-
-  document.querySelector("#nomJoueur").style.display="none";
-  choisirPokemon();
-  lancerCombat();
-=======
     ViveAttaque,
-    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),          
+    FatalFoudre = new Attaque("Fatal-Foudre",80,5,type.ELECTRIK),         
     ],loadedAssets.imagePikachuF,loadedAssets.imagePikachuB);
     
-    Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [
+    Salameche = new Pokemon("Salamèche",type.FEU,70,10,5, attaque= [ 
     Flameche,
     Charge,
     Griffe,
     Deflagration = new Attaque("Déflagration",60,5,type.FEU)            
-    ],loadedAssets.imageSalemecheF,loadedAssets.imageSalamecheB);
+    ],loadedAssets.imageSalamecheF,loadedAssets.imageSalamecheB );
 
     Bulbizarre = new Pokemon("Bulbizarre",type.PLANTE,100,5,20,attaque = [
     FouetLiane,
     Charge,
-    Bélier = new Attaque("ViveAttaque",40,10,type.NORMAL),
+    Bélier = new Attaque("Bélier",40,10,type.NORMAL),
     CanonGraine = new Attaque("Canon Graine",60,5,type.PLANTE), 
       ],loadedAssets.imageBulbizarreF,loadedAssets.imageBulbizarreB);
 
@@ -207,37 +149,22 @@ function creerPokemon(){
     ],loadedAssets.imageTaupiqueurF,loadedAssets.imageTaupiqueurB);
 
     loadedAssets.generiqueSong.play();
-  // A remplir d'autre Pokémons
 }
 
  function chargerJeu(e){
   e.preventDefault(); 
   loadedAssets.defeatSong.currentime=0;
   loadedAssets.victorySong.currentime=0;
-  nomJoueur = document.querySelector("#pseudo").value; //setTimeout(chargerJeu,1000000); Le setTimeout ne marche pas car l'écran freeze entièrement 
+  nomJoueur = document.querySelector("#pseudo").value; 
   console.log("Nom égal = " +nomJoueur);
-  // on cache la div
   document.querySelector("#nomJoueur").style.display="none";
   choisirPokemon();
->>>>>>> Développement
 }
 
 function choisirPokemon(){
   
-<<<<<<< HEAD
-  // On écoute le clique de la souris quand il clique sur l'image
-  pokemonIa = Pikachu;
-  pokemonJoueur = Salameche;
-  // On écoute le clique de la souris quand il clique sur l'image
-  loadedAssets.generiqueSong.pause();
-  loadedAssets.generiqueSong.currentime=0;
-  loadedAssets.battleSong.play();
-}
-
-function lancerCombat(){
-=======
-  pokemonIa=Pikachu;
-  pokemonJoueur=Pikachu;
+  pokemonIa=Object.assign({}, Pikachu);
+  pokemonJoueur=Object.assign({}, Pikachu);
 
   loadedAssets.generiqueSong.pause();
   loadedAssets.generiqueSong.currentime=0;
@@ -248,22 +175,6 @@ function lancerCombat(){
   titre.appendChild(texte);
   selection.appendChild(titre);
   dessinerChoix();
-
- /**************************** AFFICHAGE SUR DEUX LIGNES LES IMAGES DES POKEMONS MAIS IL FAUT PASSER PAR SVG DONC ON FAIT PAS LE CLICK SUR IMAGE ******************************/
-  /*selectPikachu.addEventListener("click", function(){
-    pokemonJoueur=Pikachu;
-  });
-  var selectPikachu = ctx.drawImage(Pikachu.imageFront,50,200);
-  var selectEvoli = ctx.drawImage(Evoli.imageFront,150,200);
-  var selectCarapuce = ctx.drawImage(Carapuce.imageFront,250,200);
-  var selectSalameche = ctx.drawImage(Salameche.imageFront,350,200);
-  var selectBulbizarre = ctx.drawImage(Bulbizarre.imageFront,450,200);
-  var selectCaninos = ctx.drawImage(Caninos.imageFront,50,300);
-  var selectTaupiqueur = ctx.drawImage(Taupiqueur.imageFront,150,300);
-  var selectMiaouss = ctx.drawImage(Miaouss.imageFront,250,300);
-  var selectChetiflor = ctx.drawImage(Chetiflor.imageFront,350,300);
-  var selectHypotrempe = ctx.drawImage(Hypotrempe.imageFront,450,300);
-  */
 
   var listePokemon=[Pikachu.nom,Evoli.nom,Carapuce.nom,Salameche.nom,Bulbizarre.nom,Caninos.nom,Taupiqueur.nom,Miaouss.nom,Chetiflor.nom,Hypotrempe.nom];
   for(var i in listePokemon){
@@ -287,52 +198,52 @@ function lancerCombat(){
 
       case "Pikachu" :
         loadedAssets.pikachuCrie.play();
-        pokemonJoueur= Pikachu;
+        pokemonJoueur= Object.assign({}, Pikachu);
         break;
 
       case "Evoli" :
         loadedAssets.evoliCrie.play();
-        pokemonJoueur= Evoli;
+        pokemonJoueur= Object.assign({}, Evoli);
         break;
 
       case "Carapuce" :
         loadedAssets.carapuceCrie.play();
-        pokemonJoueur= Carapuce;
+        pokemonJoueur= Object.assign({}, Carapuce);
         break;
 
       case "Salamèche" :
         loadedAssets.salamecheCrie.play();
-        pokemonJoueur= Salameche;
+        pokemonJoueur= Object.assign({}, Salameche);
         break;
 
       case "Bulbizarre":
         loadedAssets.bulbizarreCrie.play();
-        pokemonJoueur= Bulbizarre;
+        pokemonJoueur= Object.assign({}, Bulbizarre);
         break;
 
       case "Caninos" :
         loadedAssets.caninosCrie.play();
-        pokemonJoueur= Caninos;
+        pokemonJoueur= Object.assign({}, Caninos);
         break;
 
       case "Taupiqueur" :
         loadedAssets.taupiqueurCrie.play();
-        pokemonJoueur= Taupiqueur;
+        pokemonJoueur= Object.assign({}, Taupiqueur);
         break;
 
       case "Miaouss" :
         loadedAssets.miaoussCrie.play();
-        pokemonJoueur= Miaouss;
+        pokemonJoueur= Object.assign({}, Miaouss);
         break;
 
       case "Chetiflor" :
         loadedAssets.chetiflorCrie.play();
-        pokemonJoueur= Chetiflor;
+        pokemonJoueur= Object.assign({}, Chetiflor);
         break;
 
       case "Hypotrempe" :
         loadedAssets.hypotrempeCrie.play();
-        pokemonJoueur= Hypotrempe;
+        pokemonJoueur= Object.assign({}, Hypotrempe);
         break;
     }
       dessinerChoix();
@@ -344,52 +255,52 @@ function lancerCombat(){
 
       case "Pikachu" :
         loadedAssets.pikachuCrie.play();
-        pokemonIa= Pikachu;
+        pokemonIa= Object.assign({}, Pikachu);
         break;
 
       case "Evoli" :
         loadedAssets.evoliCrie.play();
-        pokemonIa= Evoli;
+        pokemonIa= Object.assign({}, Evoli);
         break;
 
       case "Carapuce" :
         loadedAssets.carapuceCrie.play();
-        pokemonIa= Carapuce;
+        pokemonIa= Object.assign({}, Carapuce);
         break;
 
       case "Salamèche" : 
         loadedAssets.salamecheCrie.play();
-        pokemonIa= Salameche;
+        pokemonIa= Object.assign({}, Salameche);
         break;
 
       case "Bulbizarre" :
         loadedAssets.bulbizarreCrie.play();
-        pokemonIa= Bulbizarre;
+        pokemonIa= Object.assign({}, Bulbizarre);
         break;
 
       case "Caninos" :
         loadedAssets.caninosCrie.play();
-        pokemonIa= Caninos;
+        pokemonIa= Object.assign({}, Caninos);
         break;
 
       case "Taupiqueur" :
         loadedAssets.taupiqueurCrie.play();
-        pokemonIa= Taupiqueur;
+        pokemonIa= Object.assign({}, Taupiqueur);
         break;
 
       case "Miaouss" :
         loadedAssets.miaoussCrie.play();
-        pokemonIa= Miaouss;
+        pokemonIa= Object.assign({}, Miaouss);
         break;
 
       case "Chetiflor" :
         loadedAssets.chetiflorCrie.play();
-        pokemonIa= Chetiflor;
+        pokemonIa= Object.assign({}, Chetiflor);
         break;
 
       case "Hypotrempe" :
         loadedAssets.hypotrempeCrie.play();
-        pokemonIa= Hypotrempe;
+        pokemonIa= Object.assign({}, Hypotrempe);
         break;
     }
       dessinerChoix();
@@ -400,88 +311,144 @@ function lancerCombat(){
 function dessinerChoix(){
 
   // On efface le canvas puis on dessine les pokémons à certaines coordonnées
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(pokemonJoueur.imageFront,50,250);
   ctx.drawImage(pokemonIa.imageFront,400,250);
 }
 function validerChoix(e){
   e.preventDefault();
+  vieInitialJoueur = pokemonJoueur.hp;
+  vieInitialIA = pokemonIa.hp;
   genererMap();
 }
 
+function barreJoueur()
+{
+  console.log("vie Initial Joueur : "+vieInitialJoueur);
+  console.log("vie Pokemon Joueur : "+pokemonJoueur.hp);
+  ctx.fillStyle = "lightgray";
+  ctx.fillRect(418,338,204,84); //120,120
+  ctx.fillStyle = "white";
+  ctx.fillRect(420,340,200,80); //120,120
+
+  if(pokemonJoueur.hp >= vieInitialJoueur/2) {
+    ctx.fillStyle="green";
+    ctx.fillRect(450,370,130*(pokemonJoueur.hp/vieInitialJoueur),15); //150,150
+  } else if(pokemonJoueur.hp < vieInitialJoueur/2 && pokemonJoueur.hp > vieInitialJoueur/5) {
+    ctx.fillStyle="orange";
+    ctx.fillRect(450,370,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+  } else {
+    ctx.fillStyle="red";
+    ctx.fillRect(450,370,130*(pokemonJoueur.hp/vieInitialJoueur),15);
+  }
+}
+
+function barreIA()
+{
+  console.log("vie Initial IA : "+vieInitialIA);
+  console.log("vie Pokemon IA : "+pokemonIa.hp);
+  ctx.fillStyle = "lightgray";
+  ctx.fillRect(98,78,204,84); //120,120
+  ctx.fillStyle = "white";
+  ctx.fillRect(100,80,200,80); //420,350
+
+  if(pokemonIa.hp >= vieInitialIA/2) {
+    ctx.fillStyle="green";
+    ctx.fillRect(130,110,130*(pokemonIa.hp/vieInitialIA),15); //450,380
+
+  } else if(pokemonIa.hp < vieInitialIA/2 && pokemonIa.hp > vieInitialIA/5) {
+    ctx.fillStyle="orange";
+    ctx.fillRect(130,110,130*(pokemonIa.hp/vieInitialIA),15);
+
+  } else {
+    ctx.fillStyle="red";
+    ctx.fillRect(130,110,130*(pokemonIa.hp/vieInitialIA),15);
+  }
+}
+
+function entierAleatoire(min, max)
+{
+ return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function genererMap(){
- 
- document.querySelector('#selection').style.display="none";
-  ctx.drawImage(pokemonIa.imageFront,60,150); 
-  ctx.drawImage(loadedAssets.fond,0,0);
+
+  var entier = entierAleatoire(1, 8);
+  
+  switch (entier) {
+    case 1:
+      ctx.drawImage(loadedAssets.fond1,0,0);
+      break;
+
+    case 2:
+      ctx.drawImage(loadedAssets.fond2,0,0);
+      break;
+
+    case 3:
+      ctx.drawImage(loadedAssets.fond3,0,0);
+      break;
+
+    case 4:
+      ctx.drawImage(loadedAssets.fond4,0,0);
+      break;
+
+    case 5:
+      ctx.drawImage(loadedAssets.fond5,0,0);
+      break;
+
+    case 6:
+      ctx.drawImage(loadedAssets.fond6,0,0);
+      break;
+
+    case 7:
+      ctx.drawImage(loadedAssets.fond7,0,0);
+      break;
+
+    case 8:
+      ctx.drawImage(loadedAssets.fond8,0,0);
+      break;
+  }
+
+  document.querySelector('#selection').style.display="none";
+  ctx.drawImage(pokemonIa.imageFront,415,70);
+
+  document.querySelector('#selection').style.display="none";
+  ctx.drawImage(pokemonJoueur.imageBack,60,225); 
+
+  barreIA();
+  barreJoueur();
+
   lancerCombat();
-  // Affichage Pokemon Joueur
-  // var afficheJoueur = new Image();
-  // imageJoueur.src = "./assets/img/front/pikachuF.png";
-  // imageJoueur.onload = function(){
-  //   ctx.drawImage(imageJoueur,425,70);   
-  // }
 
 }
 
 function lancerCombat(){
   
+  
+  document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom+" ("+pokemonJoueur.attaque[0].capacite+") ";
+  document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom+" ("+pokemonJoueur.attaque[1].capacite+") ";
+  document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom+" ("+pokemonJoueur.attaque[2].capacite+") ";
+  document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+pokemonJoueur.attaque[3].capacite+") ";
+  document.querySelector('#combat').style.visibility="visible";
+  document.querySelector('#info').style.visibility="visible";
+  
   loadedAssets.battleSong.play();
->>>>>>> Développement
-  attaqueJ1 = choisirAttaque(pokemonJoueur);
-  if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
-    calculDegats(attaqueJ1,pokemonIa);
-    if(pokemonIaEstVivant(pokemonIa))
-      calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-<<<<<<< HEAD
-    else return;
-=======
->>>>>>> Développement
-  }
-  else {
-    calculDegats(pokemonIa.attaque[Math.floor((Math.random() * 4))],pokemonJoueur);
-    if(pokemonJoueurEstVivant(pokemonJoueur))
-      calculDegats(attaqueJ1,pokemonIa);
-<<<<<<< HEAD
-    else return;
-=======
->>>>>>> Développement
-  }
-  // Animation de la barre de vie qui descend
-    nbCoups++;
-  // résolution du bug comme quoi l'ia est morte donc le combat s'arrête
-<<<<<<< HEAD
-      if(pokemonJoueurEstVivant(pokemonJoueur)) lancerCombat();     
-}
-
-function pokemonJoueurEstVivant(pokemonJ){
-  if( pokemonJ.hp<=0){
-=======
-      if(pokemonJoueurEstVivant(pokemonJoueur) && pokemonIaEstVivant(pokemonIa)) lancerCombat(); 
-      else console.log("Combat fini");    
+   
 }
 
 function pokemonJoueurEstVivant(pokemon){
   if( pokemon.hp<=0){
->>>>>>> Développement
+    document.querySelector('#combat').style.visibility="hidden";
+    document.querySelector('#info').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.defeatSong.play();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     var defaite=document.querySelector('#gameOver');
-<<<<<<< HEAD
-    defaite.innerHTML="Vous êtes mort ! Essayez donc de faire mieux en retentans votre chance ! <br/><br/>";
-    defaite.appendChild(button);
-    defaite.style.display="block";
-    console.log(pokemonJ.nom+" est mort\n");
-    loadedAssets.battleSong.pause();
-    loadedAssets.battleSong.currentime=0;
-=======
     button.addEventListener("click",newGame);
     defaite.appendChild(button);
     defaite.style.display="block";
     console.log(pokemon.nom+" est mort\n");
->>>>>>> Développement
     return false;
    }
    return true;
@@ -489,18 +456,12 @@ function pokemonJoueurEstVivant(pokemon){
 
 function pokemonIaEstVivant(pokemon){
   if( pokemon.hp<=0){
+    document.querySelector('#combat').style.visibility="hidden";
+    document.querySelector('#info').style.visibility="hidden";
     loadedAssets.battleSong.pause();
     loadedAssets.battleSong.currentime=0;
     loadedAssets.victorySong.play();
-<<<<<<< HEAD
-    var textVictoire= document.querySelector('#gagner');
-    textVictoire.innerHTML ="Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer<br/><br/>";
-    textVictoire.appendChild(button);
-    textVictoire.style.display="block";
-    console.log(pokemon.nom+" est mort");
-    loadedAssets.battleSong.pause();
-    loadedAssets.battleSong.currentime=0;
-=======
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     var gagner= document.querySelector('#gagner');
     var textVictoire = document.createTextNode("Vous avez gagner en : "+nbCoups+" coups ! Essayer de faire mieux en cliquant sur rejouer");
     gagner.appendChild(textVictoire);
@@ -509,43 +470,94 @@ function pokemonIaEstVivant(pokemon){
     gagner.appendChild(button);
     gagner.style.display="block";
     console.log(pokemon.nom+" est mort\n");
->>>>>>> Développement
     return false;
     }
    return true;
 }
 
-function choisirAttaque(pokemon){
-  // Il faut afficher les attaque du pokemon donc surement changer la scène
-  // Ecouteur sur l'attaque qu'il faut choisir
-  //console.log(pokemon.attaque[0]);
-  var attaqueChoisie = pokemon.attaque[0];
-  
+function choisirAttaque(e){
+  //console.log(e.value);
+  var attaqueChoisie = pokemonJoueur.attaque[e.value];
   if(attaqueChoisie.capacite != 0){
     attaqueChoisie.capacite--;
-    return attaqueChoisie;
-  }
-  else {
-    //Choisir attaque d'un pokemon redemande de chosiir un autre attaque
-    choisirAttaque(pokemon);
+    continueCombat(attaqueChoisie);
+    switch(e.value){
+      case "0": document.querySelector('#atck1').innerHTML = pokemonJoueur.attaque[0].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "1": document.querySelector('#atck2').innerHTML = pokemonJoueur.attaque[1].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "2": document.querySelector('#atck3').innerHTML = pokemonJoueur.attaque[2].nom+" ("+attaqueChoisie.capacite+") "; break;
+      case "3": document.querySelector('#atck4').innerHTML = pokemonJoueur.attaque[3].nom+" ("+attaqueChoisie.capacite+") "; break;
+    }
+    if(attaqueChoisie.capacite == 0) desactiveBouton(e);
   }
 }
+
+function desactiveBouton(e) {
+  switch(e.value){
+    case "0": document.querySelector('#atck1').disabled = true; break;
+    case "1": document.querySelector('#atck2').disabled = true; break;
+    case "2": document.querySelector('#atck3').disabled = true; break;
+    case "3": document.querySelector('#atck4').disabled = true; break;
+  }
+}
+
+function continueCombat(attaqueJ){
+  document.querySelector('#info').innerHTML = "";
+  attaqueJ1 = attaqueJ;
+  attaqueIaRandom = pokemonIa.attaque[Math.floor((Math.random() * 4))];
+  if(pokemonJoueur.vitesse >= pokemonIa.vitesse){
+    console.log("Pkmn joueur attaque"); 
+    infligeDegats(attaqueJ1,pokemonIa);
+    nbCoups++;
+    document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
+    document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
+    if(pokemonIaEstVivant(pokemonIa)){
+      console.log("Pkmn ia attaque"); 
+      infligeDegats(attaqueIaRandom,pokemonJoueur);
+      document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
+      document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
+      if(!(pokemonJoueurEstVivant(pokemonJoueur))){
+        console.log("Combat fini"); 
+      }
+    }
+  }
+  else {
+      infligeDegats(attaqueIaRandom,pokemonJoueur);
+      document.querySelector('#info').innerHTML += pokemonIa.nom+" ennemi utilise "+attaqueIaRandom.nom+"<br>";
+      document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueIaRandom,pokemonJoueur)+"<br>";
+      if(pokemonJoueurEstVivant(pokemonJoueur)){
+        infligeDegats(attaqueJ1,pokemonIa);
+        nbCoups++;
+        document.querySelector('#info').innerHTML += "Votre "+pokemonJoueur.nom+" utilise "+attaqueJ1.nom+"<br>";
+        document.querySelector('#info').innerHTML += "Il inflige "+calculDegats(attaqueJ1,pokemonIa)+"<br>";
+        if(!(pokemonIaEstVivant(pokemonIa))){
+          console.log("Combat fini"); 
+        }
+      }
+  }
+  // Animation de la barre de vie qui descend
+}
+
 
 function calculDegats(attaque,pokemon){
 
   var eff = efficacite(attaque,pokemon);
   console.log(attaque);
   console.log(pokemon);
-  pokemon.hp = pokemon.hp-((attaque.force-pokemon.armure)/5)*eff;
-<<<<<<< HEAD
-}
-
-=======
+  dmg = ((attaque.force-pokemon.armure)/5)*eff;
+  return dmg;
   // Animation barre de vie qui descend 
 }
 
+function infligeDegats(attaque,pokemon){
+  degats = calculDegats(attaque,pokemon);
+  pokemon.hp = pokemon.hp-degats;
 
->>>>>>> Développement
+  barreIA();
+  barreJoueur();
+
+  console.log("dmg");
+}
+
 function efficacite(attaque,pokemon){
   switch (pokemon.type) {
     case 'Eau':
